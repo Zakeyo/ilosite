@@ -1,45 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Página principal</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 40px;
-        }
-        h1 {
-            font-size: 2.5rem;
-        }
-        .btn-container {
-            margin-top: 30px;
-        }
-        .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            margin: 10px;
-            font-size: 1rem;
-            text-decoration: none;
-            color: white;
-            background-color: #007bff;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-        .btn:hover {
-            background-color: #0056b3;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Licencias Internacionales</title>
+  <link rel="stylesheet" href="{{ asset('css/landing.css') }}">
 </head>
 <body>
-    <h1>PÁGINA PRINCIPAL</h1>
-    <h3>Sobre nosotros, quienes somos, lo que hacemos, etc etc</h3>
-
-    <div class="btn-container">
-        <a href="{{ url('/search') }}" class="btn">Ir al buscador</a>
-        <a href="{{ url('/sys') }}" class="btn">Entrar al sistema</a>
+  <!-- NAVBAR con botón de login -->
+  <nav class="navbar">
+    <div class="nav-contenedor">
+      <span class="logo">Licencias Internacionales</span>
+      <a href="{{ url('/sys') }}" class="btn-nav">Entrar al sistema</a>
     </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="overlay">
+      <div class="contenedor">
+        <h1 class="titulo">Consulta de Licencias Internacionales</h1>
+        <p class="subtitulo">Accede fácilmente a la información de licencias asociadas</p>
+
+        <div class="botones">
+          <a href="{{ url('/search') }}" class="btn-principal">📋 Ir a consulta</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECCIÓN SOBRE NOSOTROS -->
+  <section class="nosotros">
+    <div class="contenedor">
+      <h2>Sobre nosotros</h2>
+      <p>
+        Somos una plataforma dedicada a la gestión y búsqueda de licencias internacionales asociadas a usuarios registrados. Nuestra misión es facilitar el acceso rápido, confiable y seguro a información clave para instituciones y profesionales.
+      </p>
+      <p>
+        Con tecnología moderna y un enfoque centrado en el usuario, ofrecemos soluciones que automatizan procesos, reducen tiempos y mejoran la transparencia.
+      </p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="contenedor">
+      <p>&copy; {{ date('Y') }} Sistema de Licencias Internacionales. Todos los derechos reservados.</p>
+    </div>
+  </footer>
 </body>
 </html>

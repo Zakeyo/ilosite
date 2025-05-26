@@ -1,0 +1,141 @@
+/* Reset y base */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  color: #fff;
+  scroll-behavior: smooth;
+}
+
+/* NAVBAR */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: rgb(0, 0, 0);
+  padding: 10px 30px;
+  display: flex;
+  align-items: center;
+  z-index: 1000;
+  box-sizing: border-box;
+}
+
+.nav-contenedor {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.logo {
+  font-weight: bold;
+  font-size: 1.2em;
+  color: white;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.btn-nav {
+  background-color: #00bcd4;
+  padding: 8px 16px;
+  border-radius: 6px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.9em;
+  transition: background 0.3s ease;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+.btn-nav:hover {
+  background-color: #0097a7;
+}
+
+/* HERO */
+.hero {
+  height: 100vh;
+  background: url('../images/fondo_landing.jpg') no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding-top: 70px; /* espacio para navbar */
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.contenedor {
+  max-width: 800px;
+  margin: auto;
+  padding: 40px;
+  text-align: center;
+}
+
+.titulo {
+  font-size: 2.8em;
+  margin-bottom: 10px;
+}
+
+.subtitulo {
+  font-size: 1.2em;
+  margin-bottom: 30px;
+}
+
+/* BOTÓN PRINCIPAL */
+.btn-principal {
+  background-color: #ff9800;
+  color: #fff;
+  padding: 16px 30px;
+  font-size: 1.1em;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+  transition: background 0.3s ease;
+}
+
+.btn-principal:hover {
+  background-color: #e68900;
+}
+
+/* SECCIÓN NOSOTROS */
+.nosotros {
+  background-color: #f5f5f5;
+  color: #333;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.nosotros h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.nosotros p {
+  max-width: 700px;
+  margin: 10px auto;
+  line-height: 1.6;
+}
+
+/* FOOTER */
+footer {
+  background-color: #222;
+  padding: 20px;
+  text-align: center;
+  color: #bbb;
+  font-size: 0.9em;
+}
