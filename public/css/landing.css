@@ -1,141 +1,418 @@
-/* Reset y base */
-body, html {
+body {
   margin: 0;
-  padding: 0;
   font-family: 'Segoe UI', sans-serif;
-  color: #fff;
+  background-color: #f4f4f4;
+}
+
+html {
   scroll-behavior: smooth;
 }
 
-/* NAVBAR */
+
+/* ===== Barra de navegación fija en la parte superior ===== */
 .navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  background-color: rgb(0, 0, 0);
-  padding: 10px 30px;
-  display: flex;
-  align-items: center;
-  z-index: 1000;
-  box-sizing: border-box;
+  position: fixed;             /* Fija la barra al tope de la pantalla */
+  top: 0; left: 0; right: 0;   /* Extiende de lado a lado */
+  background-color: rgb(0, 0, 0); /* Fondo negro semitransparente */
+  padding: 12px 30px;          /* Espaciado interno */
+  z-index: 1000;               /* Se asegura que esté por encima del resto */
+  display: flex;               /* Activa flexbox */
+  justify-content: center;     /* Centra su contenido horizontalmente */
 }
 
+/* ===== Contenedor interno de la barra de navegación ===== */
 .nav-contenedor {
-  max-width: 1200px;
   width: 100%;
-  margin: 0 auto;
+  max-width: 1200px;            /* Limita el ancho máximo */
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Separa logo y botón a los extremos */
   align-items: center;
 }
 
-
+/* ===== Logo o nombre de la plataforma en la barra ===== */
 .logo {
+  color: #fff;
   font-weight: bold;
-  font-size: 1.2em;
-  color: white;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  font-size: 1.3rem;
 }
 
+/* ===== Botón en la barra para "Entrar al sistema" ===== */
 .btn-nav {
-  background-color: #00bcd4;
+  background: #6896d3;         /* Color azul brillante */
+  color: white;
   padding: 8px 16px;
   border-radius: 6px;
-  color: #fff;
   text-decoration: none;
-  font-size: 0.9em;
   transition: background 0.3s ease;
-  white-space: nowrap;
-  box-sizing: border-box;
 }
 
 .btn-nav:hover {
-  background-color: #0097a7;
+  background: #44638b;         /* Oscurece el color al pasar el mouse */
 }
 
-/* HERO */
+
+/* ===== Sección principal del hero con fondo ===== */
 .hero {
-  height: 100vh;
-  background: url('../images/fondo_landing.jpg') no-repeat center center fixed;
-  background-size: cover;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  padding-top: 70px; /* espacio para navbar */
-}
-
-.overlay {
-  background-color: rgba(0, 0, 0, 0.6);
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-}
-
-.contenedor {
-  max-width: 800px;
-  margin: auto;
-  padding: 40px;
+  background: url('../images/fondo_landing.jpg') center/cover no-repeat; /* Imagen de fondo centrada y expandida */
+  height: 100vh;               /* Altura igual al alto de la pantalla */
+  display: flex;               /* Flexbox para centrar contenido */
+  align-items: center;         /* Centra verticalmente */
+  justify-content: center;     /* Centra horizontalmente */
   text-align: center;
+  color: white;                /* Texto blanco para contraste */
+  position: relative;          /* Posicionamiento para usar overlay */
 }
 
-.titulo {
-  font-size: 2.8em;
-  margin-bottom: 10px;
-}
-
-.subtitulo {
-  font-size: 1.2em;
-  margin-bottom: 30px;
-}
-
-/* BOTÓN PRINCIPAL */
-.btn-principal {
-  background-color: #ff9800;
-  color: #fff;
-  padding: 16px 30px;
-  font-size: 1.1em;
+/* ===== Capa oscura sobre la imagen para mejorar legibilidad ===== */
+.hero-overlay {
+  background: rgba(0, 0, 0, 0.6); /* Capa semitransparente negra */
+  padding: 40px;
   border-radius: 10px;
+}
+
+/* ===== Botón destacado dentro del hero ===== */
+.btn-hero {
+  margin-top: 20px;
+  display: inline-block;
+  background: #11b666;         /* Verde brillante */
+  color: black;
+  padding: 14px 28px;
+  border-radius: 6px;
   text-decoration: none;
   font-weight: bold;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
   transition: background 0.3s ease;
 }
 
-.btn-principal:hover {
-  background-color: #e68900;
+.btn-hero:hover {
+  background: #179c4e;         /* Verde más oscuro al pasar el mouse */
 }
 
-/* SECCIÓN NOSOTROS */
-.nosotros {
-  background-color: #f5f5f5;
-  color: #333;
-  padding: 60px 20px;
+
+/* ===== Sección "Sobre nosotros" ===== */
+.sobre-nosotros {
+  padding: 80px 20px;
+  background: #ffffff;
   text-align: center;
 }
 
-.nosotros h2 {
+.sobre-nosotros h2 {
   font-size: 2em;
   margin-bottom: 20px;
 }
 
-.nosotros p {
-  max-width: 700px;
-  margin: 10px auto;
-  line-height: 1.6;
+
+/* ===== Sección principal de características ===== */
+.caracteristicas {
+  background: #f8f9fa; /* Color de fondo claro */
+  padding: 80px 20px;  /* Espaciado interno arriba/abajo y a los lados */
+  text-align: center;  /* Centra el texto dentro de la sección */
 }
 
-/* FOOTER */
-footer {
-  background-color: #222;
-  padding: 20px;
+/* ===== Título de la sección de características ===== */
+.caracteristicas h2 {
+  font-size: 2.2em;     /* Tamaño grande para el título */
+  margin-bottom: 40px;  /* Espacio debajo del título */
+  color: #333;          /* Gris oscuro para el texto */
+}
+
+/* ===== Contenedor flexible para las tarjetas ===== */
+.tarjetas-contenedor {
+  display: flex;            /* Distribuye elementos en línea */
+  justify-content: center; /* Centra horizontalmente las tarjetas */
+  flex-wrap: wrap;          /* Permite que bajen a otra línea en pantallas pequeñas */
+  gap: 30px;                /* Espacio entre tarjetas */
+  max-width: 1200px;        /* Ancho máximo del contenedor */
+  margin: auto;             /* Centrado automático en la página */
+}
+
+/* ===== Estilo base de cada tarjeta individual ===== */
+.tarjeta {
+  background: white;                 /* Fondo blanco para contraste */
+  border-radius: 12px;              /* Bordes redondeados */
+  padding: 30px;                    /* Espacio interno */
+  width: 300px;                     /* Ancho fijo */
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1); /* Sombra suave */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animación suave */
+}
+
+/* ===== Efecto al pasar el mouse por encima de la tarjeta ===== */
+.tarjeta:hover {
+  transform: translateY(-10px);             /* Eleva la tarjeta */
+  box-shadow: 0 12px 24px rgba(0,0,0,0.2);   /* Aumenta la sombra */
+}
+
+/* ===== Imagen dentro de la tarjeta (ícono) ===== */
+.tarjeta img {
+  width: 60px;             /* Ancho de la imagen */
+  height: 60px;            /* Alto de la imagen */
+  margin-bottom: 20px;     /* Espacio inferior respecto al texto */
+}
+
+/* ===== Título de la tarjeta ===== */
+.tarjeta h3 {
+  margin: 0 0 10px;  /* Margen superior 0, margen inferior 10px */
+  color: #222;       /* Color de texto oscuro */
+}
+
+/* ===== Texto descriptivo dentro de la tarjeta ===== */
+.tarjeta p {
+  color: #555;          /* Gris medio para legibilidad */
+  font-size: 0.95em;    /* Tamaño ligeramente reducido */
+}
+
+
+/* ===== Sección de testimonios con slider animado ===== */
+.testimonios {
+  background-color: #f5f5f5; /* Fondo blanco para claridad */
+  padding: 80px 20px;
   text-align: center;
-  color: #bbb;
-  font-size: 0.9em;
+}
+
+.testimonios h2 {
+  font-size: 2.2em;
+  margin-bottom: 40px;
+  color: #333;
+}
+
+/* ===== Contenedor del slider ===== */
+.slider {
+  position: relative;
+  max-width: 700px;
+  margin: auto;
+  overflow: hidden;              /* Oculta las slides que no están activas */
+}
+
+/* ===== Cada slide individual ===== */
+.slide {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+/* ===== Slide activa (visible) ===== */
+.slide.active {
+  opacity: 1;
+  position: relative;
+}
+
+/* ===== Texto del testimonio ===== */
+.slide p {
+  font-size: 1.2em;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+/* ===== Nombre del testigo / usuario ===== */
+.slide h4 {
+  color: #333;
+  font-weight: bold;
+}
+
+/* ===== Contenedor principal de la sección de contacto ===== */
+.contacto {
+  background-color: #ffffff;   /* Fondo gris claro para diferenciarla del resto */
+  padding: 80px 20px;          /* Espaciado interno amplio */
+}
+
+/* ===== Contenedor flexible para el formulario e imagen ===== */
+.contacto-contenedor {
+  display: flex;               /* Usa flexbox para dos columnas */
+  flex-wrap: wrap;             /* Permite que se apilen en móviles */
+  max-width: 1200px;           /* Anchura máxima del contenido */
+  margin: 0 auto;              /* Centrado horizontal */
+  gap: 40px;                   /* Separación entre formulario e imagen */
+  align-items: center;         /* Alineación vertical centrada */
+}
+
+/* ===== Columna izquierda: Títulos y formulario ===== */
+.formulario-columna {
+  flex: 1 1 500px;             /* Ocupa la mitad del ancho si es posible */
+}
+
+.formulario-columna h2 {
+  font-size: 2.2rem;           /* Título grande */
+  margin-bottom: 10px;
+  color: #111;
+}
+
+.formulario-columna p {
+  font-size: 1rem;
+  color: #555;                 /* Gris medio para descripción */
+  margin-bottom: 40px;
+}
+
+/* ===== Estilos del formulario ===== */
+.formulario-contacto {
+  display: flex;
+  flex-direction: column;     /* Campos apilados verticalmente */
+  gap: 20px;                   /* Espacio entre campos */
+}
+
+.formulario-contacto input,
+.formulario-contacto textarea {
+  padding: 15px;               /* Espaciado interno cómodo */
+  border: 1px solid #ccc;      /* Borde gris claro */
+  border-radius: 8px;          /* Bordes redondeados */
+  font-size: 1rem;
+  width: 100%;                 /* Ocupan todo el ancho del contenedor */
+}
+
+.formulario-contacto button {
+  padding: 15px;
+  background-color: #6896d3;  /* Botón verde vibrante */
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s; /* Efecto suave al pasar el mouse */
+  width: 25%;
+}
+
+.formulario-contacto button:hover {
+  background-color: #44638b;  /* Verde más oscuro al hacer hover */
+}
+
+/* ===== Columna derecha: Imagen de contacto ===== */
+.imagen-contacto {
+  flex: 1 1 500px;             /* Ocupa la otra mitad del ancho */
+  text-align: center;          /* Centra la imagen horizontalmente */
+}
+
+.imagen-contacto img {
+  width: 100%;
+  max-width: 500px;            /* Evita que se haga demasiado grande */
+  border-radius: 12px;         /* Bordes suaves */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);  /* Sombra para profundidad */
+}
+
+
+/* ===== Footer moderno responsive ===== */
+.footer {
+  background-color: #111;
+  color: #fff;
+  padding: 60px 20px 30px;
+  text-align: center;
+}
+
+/* Contenedor principal del footer que se vuelve responsivo */
+.footer-contenedor {
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;               /* Permite que se acomode en varias líneas */
+  justify-content: space-between;
+  gap: 30px;
+  text-align: left;              /* Para alinear textos en columnas */
+}
+
+/* Cada bloque individual del footer */
+.footer-info,
+.footer-enlaces,
+.footer-social {
+  flex: 1 1 250px;               /* Se adapta al espacio disponible */
+  min-width: 200px;
+}
+
+/* Textos descriptivos */
+.footer-info h3 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.footer-info p {
+  font-size: 0.95rem;
+  color: #ccc;
+}
+
+/* Enlaces del footer */
+.footer-enlaces {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-enlaces a {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.3s;
+}
+
+.footer-enlaces a:hover {
+  color: #57c0ce;
+}
+
+/* Redes sociales con hover animado */
+.footer-social {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.footer-social a {
+  color: #ccc;
+  font-size: 1.3rem;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.footer-social a:hover {
+  color: #6896d3;
+  transform: scale(1.2);
+}
+
+/* ===== Línea inferior de derechos reservados ===== */
+.footer-copy {
+  border-top: 1px solid #333;
+  margin-top: 40px;
+  padding-top: 20px;
+  font-size: 0.85rem;
+  color: #888;
+  text-align: center;
+}
+
+
+/* ===== Diseño responsive para móviles (menos de 768px) ===== */
+@media (max-width: 768px) {
+  .contacto-contenedor {
+    flex-direction: column;    /* Apila los elementos en lugar de en columnas */
+  }
+
+  .formulario-columna h2 {
+    font-size: 1.8rem;
+  }
+
+  .formulario-columna p {
+    font-size: 0.95rem;
+  }
+
+  .formulario-contacto input,
+  .formulario-contacto textarea,
+  .formulario-contacto button {
+    font-size: 0.95rem;
+    padding: 12px;
+  }
+
+  .imagen-contacto img {
+    max-width: 100%;
+    margin-top: 20px;         /* Espacio arriba de la imagen en móviles */
+  }
+}
+
+
+/* ===== Ajustes para pantallas pequeñas ===== */
+@media (max-width: 768px) {
+  .footer-contenedor {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-enlaces,
+  .footer-social {
+    align-items: center;
+  }
 }
