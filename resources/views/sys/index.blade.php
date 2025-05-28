@@ -1,31 +1,6 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Panel del Sistema</title>
-    <style>
-        body {
-            font-family: sans-serif;
-            padding: 20px;
-        }
-        h1 {
-            color: #333;
-        }
-        .btn {
-            display: inline-block;
-            padding: 10px 15px;
-            margin: 5px;
-            background-color: #3490dc;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-        .btn:hover {
-            background-color: #2779bd;
-        }
-    </style>
-</head>
-<body>
+@extends('layouts.sidebar')
+
+@section('content')
     <h1>Bienvenido al Sistema</h1>
 
     <p>Hola, {{ $user->name }}</p>
@@ -42,5 +17,4 @@
             </button>
         </form>
     </div>
-</body>
-</html>
+@endsection
