@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\Sys;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class SysController extends Controller
 {
     public function index()
     {
-        return view('sys.index');
+        $user = Auth::user();
+        return view('sys.index', compact('user'));
     }
 }

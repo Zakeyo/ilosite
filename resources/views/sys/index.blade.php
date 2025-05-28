@@ -28,12 +28,12 @@
 <body>
     <h1>Bienvenido al Sistema</h1>
 
-    <p>Hola, {{ Auth::user()->name }}</p>
+    <p>Hola, {{ $user->name }}</p>
 
     <div>
-        <a class="btn" href="{{ url('/sys/users') }}">Gestión de Usuarios</a>
-        <a class="btn" href="{{ url('/search') }}">Buscar Personas</a>
-        <a class="btn" href="{{ url('/') }}">Ir a la Página Principal</a>
+        <a class="btn" href="{{ route('sys.users.index') }}">Gestión de Usuarios</a>
+        <a class="btn" href="{{ route('search') }}">Buscar Personas</a>
+        <a class="btn" href="{{ route('welcome') }}">Ir a la Página Principal</a>
         
         <form method="POST" action="{{ route('logout') }}" style="display:inline">
             @csrf

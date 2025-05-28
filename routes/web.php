@@ -11,7 +11,7 @@ use App\Http\Controllers\Sys\UserController;
 use App\Http\Controllers\Sys\SysController;
 
 // Página de inicio
-Route::get('/', WelcomeController::class);
+Route::get('/', WelcomeController::class)->name('welcome');
 
 // Buscador (sin login)
 Route::get('/search', [SearchController::class, 'index'])->name('search');

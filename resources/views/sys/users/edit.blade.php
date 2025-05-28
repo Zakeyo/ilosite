@@ -66,19 +66,20 @@
 <body>
     <h1>Crear Nuevo Usuario</h1>
 
-    <form method="POST" action="{{ route('sys.users.store') }}">
+    <form action="{{ route('sys.users.update', $user->id) }}" method="POST">
         @csrf
+        @method('PUT')
 
-        <label for="name">Nombre</label>
-        <input type="text" name="name" id="name" required>
+        <label for="name">Nombre:</label>
+        <input type="text" name="name" value="{{ old('name', $user->name) }}" required>
 
-        <label for="email">Correo electrónico</label>
-        <input type="email" name="email" id="email" required>
+        <label for="email">Correo:</label>
+        <input type="email" name="email" value="{{ old('email', $user->email) }}" required>
 
-        <label for="password">Contraseña</label>
-        <input type="password" name="password" id="password" required>
+        <label for="password">Nueva Contraseña (opcional):</label>
+        <input type="password" name="password">
 
-        <button type="submit" class="btn">Crear Usuario</button>
+        <button class="btn" type="submit">Actualizar</button>
     </form>
 
     <br>
