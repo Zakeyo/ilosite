@@ -7,14 +7,14 @@
 
         <!-- Email Address -->
         <div>
-            <x-input-label for="email" :value="__('Email')" />
+            <x-input-label for="email" :value="__('Correo electrónico')" />
             <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
         <!-- Password -->
         <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
+            <x-input-label for="password" :value="__('Contraseña')" />
 
             <x-text-input id="password" class="block mt-1 w-full"
                             type="password"
@@ -24,7 +24,21 @@
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
 
-        <!-- Remember Me -->
+        <div class="flex justify-between mt-6">
+            <!-- Botón Volver al Inicio -->
+            <a href="{{ url('/') }}" class="px-4 py-2 rounded-lg text-sm font-semibold text-white bg-[#22305D] hover:bg-[#030304] transition duration-300 shadow-md">
+                Volver al Inicio
+            </a>
+
+            <!-- Botón Iniciar sesión -->
+            <button type="submit" class="px-4 py-2 rounded-lg text-sm font-semibold text-white bg-gradient-to-r from-[#C81617] to-[#EBE2E1] hover:opacity-60 transition duration-300 shadow-md">
+                Iniciar sesión
+            </button>
+        </div>        
+    </form>   
+</x-guest-layout>
+
+{{-- <!-- Remember Me and forgot your password iban dentro del form los deje fuera por no usarse -->
         <div class="block mt-4">
             <label for="remember_me" class="inline-flex items-center">
                 <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
@@ -38,10 +52,4 @@
                     {{ __('Forgot your password?') }}
                 </a>
             @endif
-
-            <x-primary-button class="ms-3">
-                {{ __('Log in') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+        </div> --}}

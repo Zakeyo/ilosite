@@ -13,8 +13,8 @@
     <!-- Navbar -->
     <nav class="navbar" data-aos="fade-in">
         <div class="nav-contenedor">
-            <div class="logo">Licencias Global</div>
-            <a href="{{ url('/sys') }}" class="btn-nav">🔐 Entrar al sistema</a>
+            <div class="logo"><img src="./images/logo_pagina.png" alt=""></div>
+            <a href="{{ route('sys') }}" class="btn-nav">🔐 Entrar al sistema</a>
         </div>
     </nav>
 
@@ -23,7 +23,7 @@
         <div class="hero-overlay" data-aos="fade-up">
             <h1  data-aos="zoom-in">Consulta licencias internacionales</h1>
             <p  data-aos="fade-in">Accede rápidamente a la base de datos de licencias asociadas a usuarios registrados.</p>
-            <a href="{{ url('/search') }}" class="btn-hero">📋 Ir a consulta</a>
+            <a href="{{ route('search') }}" class="btn-hero">📋 Ir a consulta</a>
         </div>
     </header>
 

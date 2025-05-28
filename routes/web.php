@@ -18,7 +18,7 @@ Route::get('/search', [SearchController::class, 'index'])->name('search');
 
 // Sistema (requiere login)
 Route::middleware(['auth'])->prefix('sys')->group(function () {
-    Route::get('/', [SysController::class, 'index'])->name('sys.dashboard');
+    Route::get('/', [SysController::class, 'index'])->name('sys');
 
     Route::resource('/users', UserController::class)->names('sys.users');
 });

@@ -108,6 +108,6 @@
         </tbody>
     </table>
 
-    <a class="btn" href="{{ route('sys.dashboard') }}">← Volver al sistema</a>
+    <a class="btn" href="{{ route('sys') }}">← Volver al sistema</a>
 </body>
 </html>
