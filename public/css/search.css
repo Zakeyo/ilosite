@@ -1,0 +1,123 @@
+/* ====== Estilos Generales ====== */
+body {
+    font-family: 'Figtree', sans-serif;
+    background-color: #EBE2E1;
+}
+
+/* ====== Contenedor Principal (Tarjeta glass) ====== */
+.glass-card {
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* ====== Título Principal ====== */
+.title {
+    text-align: center;
+    font-size: 2rem;
+    color: #22305D;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+}
+
+/* ====== Formularios de Búsqueda ====== */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+  align-items: end;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.input-group input {
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border: none;
+    color: #000;
+}
+
+
+/* Botón con gradiente rojo que simula el color institucional */
+.btn-red-gradient {
+    background: linear-gradient(135deg, #C81617, #eb7e88);
+    justify-content: center;
+    margin-top: 1rem;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.input-button {
+  grid-column: span 3; /* Ocupa toda la fila del grid */
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.input-button button {
+  width: 100%; /* o 100% si lo quieres máximo */
+  max-width: 400px;
+}
+
+/* Efecto hover para el botón degradado */
+.btn-red-gradient:hover {
+    background: linear-gradient(135deg, #a81213, #e06674);
+    transform: scale(1.05);
+}
+
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+  .glass-card {
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin: 1rem;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .title {
+    font-size: 1.4rem;
+    text-align: center;
+  }
+
+  .input-group label {
+    font-size: 0.95rem;
+  }
+
+  .input-group input {
+    font-size: 0.95rem;
+    padding: 0.6rem;
+  }
+
+  .input-button {
+    grid-column: span 1;
+    justify-content: center;
+    margin-top: 1.5rem;
+    
+  }
+
+  .input-button button {
+    font-size: 1rem;
+    width: 100%;
+    padding: 0.9rem;
+  }
+}

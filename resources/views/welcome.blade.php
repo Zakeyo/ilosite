@@ -27,6 +27,10 @@
         </div>
     </header>
 
+    <section class="borde-hero">
+    
+    </section>
+
     <!-- Sobre nosotros -->
   <section class="sobre-nosotros" id="nosotros">
     <h2  data-aos="zoom-in">Sobre Nosotros</h2>
@@ -34,8 +38,8 @@
   </section>
 
     <!-- Tarjetas con animacion -->
-  <section class="caracteristicas" data-aos="fade-up">
-    <h2>Nuestras Características</h2>
+  <section class="caracteristicas">
+    <h2 data-aos="fade-in">Nuestras Características</h2>
     <div class="tarjetas-contenedor" data-aos="fade-right">
         <div class="tarjeta">
             <img src="/images/icono1.png" alt="Rapidez">
@@ -56,9 +60,9 @@
 </section>
 
 <!-- Sección de Testimonios / Slider -->
-<section class="testimonios" data-aos="fade-up">
-    <h2>Lo que dicen nuestros usuarios</h2>
-    <div class="slider">
+<section class="testimonios">
+    <h2 data-aos="fade-in">Lo que dicen nuestros usuarios</h2>
+    <div class="slider" data-aos="fade-in">
         <div class="slide active">
             <p>"El sistema me permitió encontrar mis licencias internacionales en segundos. ¡Muy intuitivo!"</p>
             <h4>— Ana Gómez</h4>
@@ -76,11 +80,11 @@
 
 
 <!-- Sección de Contacto con imagen -->
-<section class="contacto" id="contacto" data-aos="fade-up">
+<section class="contacto" id="contacto">
   <div class="contacto-contenedor">
     
     <!-- Columna izquierda: formulario -->
-    <div class="formulario-columna" data-aos="fade-right">
+    <div class="formulario-columna" data-aos="fade-in">
       <h2>Contáctanos</h2>
       <p>¿Tienes dudas o necesitas ayuda? Estamos para servirte.</p>
 
@@ -93,7 +97,7 @@
     </div>
 
     <!-- Columna derecha: imagen -->
-    <div class="imagen-contacto" data-aos="fade-left">
+    <div class="imagen-contacto" data-aos="fade-in">
       <img src="{{ asset('images/imagen_contacto.jpg') }}" alt="Imagen de contacto">
     </div>
 
@@ -103,7 +107,7 @@
 
 
     <!-- Sección de Footer -->
-<footer class="footer" data-aos="fade-right">
+<footer class="footer">
   <div class="footer-contenedor">
     <div class="footer-info">
       <h3>Licencias Globales</h3>

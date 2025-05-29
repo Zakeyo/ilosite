@@ -19,6 +19,13 @@
 
 
     <ul class="navbar-nav ml-auto">
+
+    <form method="POST" action="{{ route('logout') }}" class="d-inline ms-auto">
+        @csrf
+        <button type="submit" class="btn btn-danger btn-sm">
+            Cerrar Sesión
+        </button>
+    </form>
       <!------------------------------------ BUSCADOR (LUPA) ------------------------------------>
       {{-- <li class="nav-item">
         <a class="nav-link" data-widget="navbar-search" href="#" role="button">
