@@ -1,69 +1,6 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Usuarios</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            padding: 20px;
-            background-color: #f9f9f9;
-        }
+@extends('layouts.sidebar')
 
-        h1 {
-            color: #333;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 10px 15px;
-            margin: 5px 0;
-            background-color: #3490dc;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-
-        .btn:hover {
-            background-color: #2779bd;
-        }
-
-        .btn-secondary {
-            background-color: #38c172;
-        }
-
-        .btn-secondary:hover {
-            background-color: #2f9e68;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
-        }
-
-        th, td {
-            border: 1px solid #ddd;
-            padding: 12px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #f4f4f4;
-        }
-
-        tr:hover {
-            background-color: #f1f1f1;
-        }
-
-        .actions a {
-            margin-right: 8px;
-        }
-    </style>
-</head>
-<body>
-    <h1>Gestión de Usuarios</h1>
+@section('content')
 
     @if(session('success'))
         <div style="background-color: #d4edda; color: #155724; padding: 10px; margin-bottom: 10px; border-radius: 4px;">
@@ -109,5 +46,4 @@
     </table>
 
     <a class="btn" href="{{ route('sys') }}">← Volver al sistema</a>
-</body>
-</html>
+@endsection
