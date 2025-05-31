@@ -2,19 +2,54 @@
 
 @section('content')
 
-    <div class="col-lg-3">
-        <h1>Menú principal</h1>
-
-        <div class="small-box bg-primary">
-            <div class="inner">
-                <h3>{{ count($users) }}</h3>
-                <p>Ingresados</p>
-            </div>
-                <div class="icon">
-                    <i class="bi bi-person-vcard-fill"></i>
-                </div>
-            <a href="{{ route('sys.users.index') }}" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
+<div class="row">
+  <!-- Usuarios -->
+  <div class="col-lg-3 col-md-6 mb-4">
+    <div class="glass-box glass-usuarios" data-aos="fade-up">
+      <div class="glass-inner">
+        <div class="glass-content">
+          <h2 class="glass-title">{{ count($users) }}</h2>
+          <p class="glass-subtitle">Usuarios</p>
         </div>
+        <div class="glass-icon">
+          <i class="fas fa-users"></i>
+        </div>
+      </div>
+      <a href="{{ route('sys.users.index') }}" class="glass-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
     </div>
+  </div>
+
+  <!-- Licencias -->
+  <div class="col-lg-3 col-md-6 mb-4">
+    <div class="glass-box glass-licencias" data-aos="fade-up" data-aos-delay="100">
+      <div class="glass-inner">
+        <div class="glass-content">
+          <h2 class="glass-title">0</h2>
+          <p class="glass-subtitle">Licencias</p>
+        </div>
+        <div class="glass-icon">
+          <i class="fas fa-id-card"></i>
+        </div>
+      </div>
+      <a href="#" class="glass-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
+    </div>
+  </div>
+
+  <!-- Consultas -->
+  <div class="col-lg-3 col-md-6 mb-4">
+    <div class="glass-box glass-consultas" data-aos="fade-up" data-aos-delay="200">
+      <div class="glass-inner">
+        <div class="glass-content">
+          <h2 class="glass-title">0</h2>
+          <p class="glass-subtitle">Consultas</p>
+        </div>
+        <div class="glass-icon">
+          <i class="fas fa-search"></i>
+        </div>
+      </div>
+      <a href="#" class="glass-footer">Ver detalles <i class="fas fa-arrow-circle-right"></i></a>
+    </div>
+  </div>
+
  
 @endsection

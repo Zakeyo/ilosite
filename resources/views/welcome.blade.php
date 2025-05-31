@@ -121,11 +121,11 @@
       <a href="#contacto">Contacto</a>
     </div>
 
-    <div class="footer-social">
+    {{-- <div class="footer-social">
       <a href="#"><i class="fab fa-facebook-f"></i></a>
       <a href="#"><i class="fab fa-twitter"></i></a>
       <a href="#"><i class="fab fa-instagram"></i></a>
-    </div>
+    </div> --}}
       <div class="footer-copy">
         © 2025 Licencias Globales. Todos los derechos reservados.
       </div>

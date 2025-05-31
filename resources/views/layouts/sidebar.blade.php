@@ -50,16 +50,20 @@
 
             <li class="nav-item">
               <a href="{{ route('sys') }}" class="nav-link {{ request()->routeIs('sys') ? 'active' : '' }}">
-                <i class="nav-icon fas">
-                  <i class="bi bi-house-fill"></i>
-                </i>
-                <p>
-                  Menú principal
-                </p>
+                <i class="nav-icon fas fa-home"></i>
+                  <p>Menú principal</p>
               </a>
             </li>
 
             <li class="nav-item">
+              <a href="{{ route('sys.users.index') }}" class="nav-link {{ request()->routeIs('sys.users.*') ? 'active' : '' }}">
+                <i class="nav-icon fas fa-users"></i>
+                  <p>Usuarios</p>
+              </a>
+            </li>
+
+
+            {{-- <li class="nav-item">
               <a href="{{ route('search') }}" class="nav-link" target="_blank">
                 <i class="nav-icon fas">
                   <i class="fas fa-search fa-fw"></i>
@@ -68,19 +72,7 @@
                   Busqueda
                 </p>
               </a>
-            </li>
-
-            <li class="nav-item">
-              <a href="{{ route('sys.users.index') }}" class="nav-link {{ request()->routeIs('sys.users.*') ? 'active' : '' }}">
-                <i class="nav-icon fas">
-                  <i class="fas fa-users fa-fw"></i>
-                </i>
-                <p>
-                  Usuarios
-                  {{-- <span class="right badge badge-danger">New</span> --}}
-                </p>
-              </a>
-            </li>
+            </li> --}}
             
           </ul>
         </nav>
@@ -91,29 +83,35 @@
 
 
   <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
-      <div class="content">
-        <div class="content" style="padding: 15px">
-          <div class="row">
-            
-            @yield('content')
-            
-          </div><!-- /.row -->
+    <div class="wrapper d-flex flex-column min-vh-100">
+      <div class="content-wrapper flex-grow-1 fondo-adminlte" style="padding: 15px">
+        <div class="marco">
+          @yield('content')
         </div>
       </div>
     </div>
-    <!-- /.content-wrapper -->
+
+  <!-- /.content-wrapper -->
 
 
     <!-- Main Footer -->
-    <footer class="main-footer">
-      <!-- To the right -->
-      <div class="float-right d-none d-sm-inline">
-        {{-- Anything you want --}}
+    <footer class="main-footer custom-footer text-center text-sm-start">
+      <div class="d-flex justify-content-between align-items-center flex-wrap">
+        <!-- Lado izquierdo -->
+        <div>
+          <strong>
+            &copy; 2025 <a href="{{ route('welcome') }}" class="footer-link">International Licence Official</a>.
+          </strong>
+          Todos los derechos reservados.
+        </div>
+
+        <!-- Lado derecho opcional -->
+        <div class="d-none d-sm-inline text-muted">
+          Sistema de gestión de licencias internacionales.
+        </div>
       </div>
-      <!-- Default to the left -->
-      <strong>Copyright &copy; 2025 <a href=" {{ route('welcome') }}">International Liscence Official</a>.</strong> All rights reserved.
     </footer>
+
   </div>
   <!-- ./wrapper -->
 @endsection

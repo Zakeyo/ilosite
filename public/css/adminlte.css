@@ -1,0 +1,658 @@
+/*esto muestra la imagen de fondo en adminlte*/
+.fondo-adminlte {
+  background-image: url('/images/fondo-tecnologia.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/*esto es para que footer no se vaya a mitad de pantalla por falta de contenido*/
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content-wrapper {
+  flex-grow: 1;
+}
+
+
+/*seccion navbar*/
+/*toda el cuadro que muestra el navbar*/
+.navbar-control-total {
+  background: linear-gradient(to right, #22305D, #030304);
+  color: white;
+}
+
+/* boton cerrar sesion en el navbar de la vista admin */
+.btn-cerrar-sesion {
+  background: linear-gradient(to right, #b51414, #d9caca);
+  color: white;
+  font-weight: bold;
+  border: none;
+  padding: 0.5rem 1.2rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-cerrar-sesion:hover {
+  filter: brightness(0.9);
+  transform: scale(1.05);
+}
+
+/*botones lado izquierdo nav-bar*/
+.boton-hamburguesa {
+  color: #fff;
+  padding: 0.5rem;
+  transition: transform 0.2s ease;
+}
+
+.boton-hamburguesa:hover {
+  transform: scale(1.1);
+  color: #030304;
+}
+
+.navbar-expand{
+justify-content: flex-end;
+}
+
+.botones-navbar {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  padding: 0;
+  margin: 0;
+  align-items: center;
+}
+
+.btn-navbar{
+  background: #c7681b;
+  color: white;
+  font-weight: bold;
+  border: none;
+  padding: 0.5rem 1.2rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-navbar:hover {
+  color: white;
+  filter: brightness(0.9);
+  transform: scale(1.05);
+}
+
+/*esto estilos son del dropdown en el navbar para los tres botones*/
+
+.dropdown-toggle.btn-navbar {
+  background: #c7681b;
+  color: white;
+  border-radius: 8px;
+  font-weight: bold;
+  padding: 0.5rem 1.2rem;
+}
+
+.dropdown-menu {
+  background-color: #22305D;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-item {
+  color: #EBE2E1;
+  padding: 0.7rem 1rem;
+}
+
+.dropdown-item:hover {
+  background-color: #c7681b;
+  color: #fff;
+}
+
+/* Previene que el dropdown se desborde fuera de pantalla */
+.custom-dropdown {
+  min-width: 200px;
+  max-width: 90vw; /* Se adapta al ancho de la pantalla */
+  right: 0;
+  left: auto;
+  transform: translateX(-5px); /* pequeño ajuste opcional */
+}
+
+
+/*Seccion Sidebar*/
+/* === Sidebar background y texto === */
+.main-sidebar {
+  background: linear-gradient(to bottom, #22305D, #030304);
+  color: #EBE2E1;
+}
+
+/* === Enlaces del sidebar === */
+.main-sidebar .nav-sidebar .nav-link {
+  color: #EBE2E1;
+  transition: background 0.3s ease, color 0.3s ease;
+  font-weight: 500;
+  border-radius: 6px;
+  margin: 0.2rem 0;
+}
+
+/* === Hover de enlaces === */
+.main-sidebar .nav-sidebar .nav-link:hover {
+  background-color: #C81617;
+  color: #fff;
+}
+
+/* === Enlace activo === */
+.main-sidebar .nav-sidebar .nav-link.active {
+  background: #EBE2E1;
+  color: #030304;
+  font-weight: bold;
+}
+
+/* === Íconos === */
+.main-sidebar .nav-icon {
+  color: inherit;
+  margin-right: 0.5rem;
+}
+
+/*esto es lo que controla el espacio del contenido en la vista adminlte*/
+.marco{
+  display: block;
+  width: 100%;
+} 
+
+/*seccion dashboard*/
+.glass-box {
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+}
+
+.glass-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.25);
+}
+
+.glass-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.glass-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.glass-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.glass-subtitle {
+  font-size: 1.1rem;
+  color: #EBE2E1;
+  margin-top: 0.3rem;
+}
+
+.glass-icon i {
+  font-size: 3rem;
+  color: #EBE2E1;
+  transition: transform 0.3s ease;
+}
+
+.glass-box:hover .glass-icon i {
+  transform: scale(1.15) rotate(2deg);
+}
+
+.glass-footer {
+  margin-top: 1rem;
+  display: inline-block;
+  color: #EBE2E1;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.glass-footer:hover {
+  color: #3ac816;
+}
+
+/* Efecto al hacer hover general */
+.glass-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.25);
+}
+
+/* Tarjeta: USUARIOS */
+.glass-usuarios {
+  background: linear-gradient(to bottom right, rgba(104, 150, 211, 0.6), rgba(34, 48, 93, 0.4));
+  border-left: 4px solid #EBE2E1;
+}
+
+/* Tarjeta: LICENCIAS */
+.glass-licencias {
+  background: linear-gradient(to bottom right, rgba(104, 150, 211, 0.6), rgba(34, 48, 93, 0.4));
+  border-left: 4px solid #fff;
+}
+
+/* Tarjeta: CONSULTAS */
+.glass-consultas {
+  background: linear-gradient(to bottom right, rgba(104, 150, 211, 0.6), rgba(34, 48, 93, 0.4));
+  border-left: 4px solid #b3d4fc;
+}
+
+/* Tarjeta: MENSAJES
+.glass-mensajes {
+  background: linear-gradient(to bottom right, rgba(48, 48, 48, 0.7), rgba(20, 20, 20, 0.5));
+  border-left: 4px solid #C81617;
+} */
+
+/* Hover personalizado */
+.glass-usuarios:hover {
+  box-shadow: 0 0 20px rgba(235, 226, 225, 0.5);
+  filter: saturate(1.7);
+}
+
+.glass-licencias:hover {
+  box-shadow: 0 0 20px rgba(235, 226, 225, 0.5);
+  filter: saturate(1.7);
+}
+
+.glass-consultas:hover {
+  box-shadow: 0 0 20px rgba(235, 226, 225, 0.5);
+  filter: saturate(1.7);
+}
+
+
+/*Seccion crear usuarios*/
+.form-glass {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+  width: 100%;
+  margin: 0;
+}
+
+.form-glass label {
+  color: #EBE2E1;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.form-glass input {
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-size: 1rem;
+  transition: 0.3s ease;
+}
+
+.form-glass input:focus {
+  outline: none;
+  border-color: #C81617;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* Botón del formulario */
+.btn-glass.submit {
+  background: linear-gradient(to right, #C81617, #EBE2E1);
+  color: #fff;
+  border: none;
+  font-weight: bold;
+  border-radius: 8px;
+  padding: 0.7rem 1.2rem;
+  cursor: pointer;
+  transition: 0.3s ease;
+  margin-top: 1rem;
+}
+
+.btn-glass.submit:hover {
+  filter: brightness(1.1);
+  transform: scale(1.04);
+}
+
+/* seccion editar usuarios */
+/*glass carga para varias vistas*/
+.glass-card {
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 100%;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  color: #fff;
+}
+
+.form-glass {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.form-glass label {
+  color: #EBE2E1;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.form-glass input {
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-size: 1rem;
+  transition: 0.3s ease;
+}
+
+.form-glass input:focus {
+  outline: none;
+  border-color: #C81617;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* Botón de actualizar */
+.btn-glass.submit {
+  background: linear-gradient(to right, #C81617, #EBE2E1);
+  color: #fff;
+  border: none;
+  font-weight: bold;
+  border-radius: 8px;
+  padding: 0.7rem 1.2rem;
+  cursor: pointer;
+  transition: 0.3s ease;
+  margin-top: 1rem;
+}
+
+.btn-glass.submit:hover {
+  filter: brightness(1.1);
+  transform: scale(1.04);
+}
+
+.btn-back {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.6rem 1.2rem;
+  background: #22305D;
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.btn-back:hover {
+  background: #1a2544;
+}
+
+/*seccion usuarios registrados*/
+.glass-card {
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 1000px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  color: #ffffff;
+}
+
+.header-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.btn-create {
+  background: #6ba86b;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.btn-create:hover {
+  background: #2fb414;
+  color: white;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+.glass-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.glass-table th,
+.glass-table td {
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: left;
+}
+
+.glass-table th {
+  background-color: rgba(0, 0, 0, 0.2);
+  font-weight: bold;
+}
+
+.btn-glass {
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  text-decoration: none;
+  font-weight: 600;
+  margin-right: 0.3rem;
+  transition: 0.3s ease;
+}
+
+.btn-glass.edit {
+  background: #6896d3;
+  color: #fff;
+}
+
+.btn-glass.view {
+  background: #57c0ce;
+  color: #fff;
+}
+
+.btn-glass.delete {
+  background: #C81617;
+  color: #fff;
+}
+
+.btn-glass:hover {
+  filter: brightness(1.15);
+  transform: scale(1.03);
+}
+
+.btn-back {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.6rem 1.2rem;
+  background: #1a2544;
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.btn-back:hover {
+  background: #22305D;
+  color: white;
+}
+
+/*seccion ver datos*/
+.info-user {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.info-user .label {
+  font-weight: bold;
+  color: #EBE2E1;
+  margin-right: 0.5rem;
+}
+
+.info-user p {
+  color: #ffffff;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.7rem 1rem;
+  border-radius: 8px;
+  border-left: 3px solid #C81617;
+}
+
+/* Botón volver (reutiliza el estilo del panel) */
+.btn-back {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.6rem 1.2rem;
+  background: #22305D;
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.btn-back:hover {
+  background: #1a2544;
+}
+
+
+/*seccion footer*/
+/* === Footer === */
+.custom-footer {
+  background-color: #030304;
+  color: #EBE2E1;
+  padding: 1rem 2rem;
+  font-size: 0.9rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.custom-footer .footer-link {
+  color: #EBE2E1;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.custom-footer .footer-link:hover {
+  color: #C81617;
+  text-decoration: underline;
+}
+
+/*responsive footer*/
+@media (max-width: 768px) {
+  .custom-footer {
+    text-align: center;
+    padding: 1.5rem 1rem;
+  }
+}
+
+/*responsive contenido adminlte*/
+@media (max-width: 768px) {
+  .glass-card {
+    padding: 1.2rem;
+    margin: 1rem;
+    border-radius: 12px;
+  }
+
+  .glass-card h2 {
+    font-size: 1.4rem;
+    text-align: center;
+  }
+
+  .form-glass input {
+    font-size: 0.95rem;
+    padding: 0.6rem 0.9rem;
+  }
+
+  .btn-glass.submit,
+  .btn-back,
+  .btn-create {
+    width: 100%;
+    text-align: center;
+    font-size: 1rem;
+  }
+
+  .info-user p {
+    font-size: 0.95rem;
+    flex-direction: column;
+    padding: 0.6rem 0.8rem;
+  }
+
+  .header-actions {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .glass-table {
+    font-size: 0.9rem;
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .glass-table th,
+  .glass-table td {
+    padding: 0.6rem;
+  }
+
+  .actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+body {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+input, button, a {
+  touch-action: manipulation;
+}
+
+/* Asegura que el dropdown del navbar se vea bien en móviles */
+@media (max-width: 768px) {
+  .custom-dropdown {
+    width: 100vw;
+    border-radius: 0;
+    margin-top: 0.3rem;
+  }
+
+  .custom-dropdown .dropdown-item {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+}
+

@@ -1,50 +1,17 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Detalle del Usuario</title>
-    <style>
-        body {
-            font-family: sans-serif;
-            padding: 20px;
-        }
+@extends('layouts.sidebar')
+@section('content')
 
-        h1 {
-            color: #333;
-        }
+<div class="glass-card">
+  <h2>Detalle del Usuario</h2>
 
-        .info {
-            margin: 20px 0;
-        }
+  <div class="info-user">
+    <p><span class="label">🆔 ID:</span> {{ $user->id }}</p>
+    <p><span class="label">👤 Nombre:</span> {{ $user->name }}</p>
+    <p><span class="label">📧 Email:</span> {{ $user->email }}</p>
+    <p><span class="label">📅 Creado:</span> {{ $user->created_at->format('d/m/Y H:i') }}</p>
+  </div>
 
-        .label {
-            font-weight: bold;
-        }
+  <a href="{{ route('sys.users.index') }}" class="btn-back">← Volver</a>
+</div>
 
-        .btn {
-            display: inline-block;
-            padding: 10px 15px;
-            background-color: #3490dc;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-
-        .btn:hover {
-            background-color: #2779bd;
-        }
-    </style>
-</head>
-<body>
-    <h1>Detalle del Usuario</h1>
-
-    <div class="info">
-        <p><span class="label">ID:</span> {{ $user->id }}</p>
-        <p><span class="label">Nombre:</span> {{ $user->name }}</p>
-        <p><span class="label">Email:</span> {{ $user->email }}</p>
-        <p><span class="label">Creado:</span> {{ $user->created_at->format('d/m/Y H:i') }}</p>
-    </div>
-
-    <a href="{{ route('sys.users.index') }}" class="btn">Volver</a>
-</body>
-</html>
+@endsection
