@@ -1,6 +1,6 @@
 /*esto muestra la imagen de fondo en adminlte*/
 .fondo-adminlte {
-  background-image: url('/images/fondo-tecnologia.png');
+  /* background-image: url('/images/fondo-tecnologia.png'); */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

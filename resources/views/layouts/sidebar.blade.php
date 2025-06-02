@@ -50,14 +50,27 @@
 
             <li class="nav-item">
               <a href="{{ route('sys') }}" class="nav-link {{ request()->routeIs('sys') ? 'active' : '' }}">
-                <i class="nav-icon fas fa-home"></i>
+                <i class="nav-icon fas">
+                  <i class="nav-icon fas fa-home"></i>
+                </i>
                   <p>Menú principal</p>
               </a>
             </li>
 
             <li class="nav-item">
+              <a href="{{ route('sys.applicants.index') }}" class="nav-link {{ request()->routeIs('sys.applicants.*') ? 'active' : '' }}">
+                <i class="nav-icon fas">
+                  <i class="nav-icon fas fa-users"></i>
+                </i>
+                  <p>Aplicantes</p>
+              </a>
+            </li>
+
+            <li class="nav-item">
               <a href="{{ route('sys.users.index') }}" class="nav-link {{ request()->routeIs('sys.users.*') ? 'active' : '' }}">
-                <i class="nav-icon fas fa-users"></i>
+                <i class="nav-icon fas">
+                  <i class="bi bi-person-badge-fill"></i>
+                </i>
                   <p>Usuarios</p>
               </a>
             </li>

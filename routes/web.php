@@ -9,6 +9,8 @@ use App\Http\Controllers\ProfileController;
 
 use App\Http\Controllers\Sys\UserController;
 use App\Http\Controllers\Sys\SysController;
+use App\Http\Controllers\Sys\ApplicantController;
+use App\Http\Controllers\Sys\LicenseController;
 
 // Página de inicio
 Route::get('/', WelcomeController::class)->name('welcome');
@@ -20,6 +22,8 @@ Route::get('/search', [SearchController::class, 'index'])->name('search');
 Route::middleware(['auth'])->prefix('sys')->group(function () {
     Route::get('/', [SysController::class, 'index'])->name('sys');
 
+    Route::resource('/applicants', ApplicantController::class)->names('sys.applicants');
+    Route::resource('/licenses', LicenseController::class)->names('sys.license');
     Route::resource('/users', UserController::class)->names('sys.users');
 });
 
