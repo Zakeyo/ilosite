@@ -1,23 +1,27 @@
 @extends('layouts.sidebar')
 
 @section('content')
-<div class="container mt-4">
-    <h2>Registrar nuevo aplicante</h2>
-@if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+<div class="glass-form-container">
+  <h2 class="glass-title">Registrar nuevo aplicante</h2>
+
+  @if ($errors->any())
+      <div class="alert alert-danger">
+          <ul>
+              @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+              @endforeach
+          </ul>
+      </div>
+  @endif
 
 
-    <form action="{{ route('sys.applicants.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('sys.applicants.store') }}" method="POST" enctype="multipart/form-data" class="glass-form">
         @csrf
 
-        {{-- Datos personales --}}
+        {{-- Seccion Informacion personal --}}
+    <div class="glass-section">
+      <h3 class="glass-section-title">Información personal</h3>
+
         <div class="mb-3">
             <label>Nombre</label>
             <input type="text" name="first_name" class="form-control" required>
@@ -116,10 +120,12 @@
                 <input type="file" name="local_license_back" class="form-control">
             </div>
         </div>
+    </div>
+
+    <div class="glass-section">
+      <h3 class="glass-section-title">Datos de la licencia</h3>
 
         {{-- Datos de la licencia que se va a generar --}}
-        <hr>
-        <h4>Datos de la licencia</h4>
 
         <div class="mb-3">
             <label>Tipo de licencia</label>
@@ -167,8 +173,9 @@
             <label>Archivos adicionales (opcional)</label>
             <input type="file" name="extras[]" multiple class="form-control">
         </div>
-
-        <button type="submit" class="btn btn-primary">Guardar</button>
+    </div>
+        {{-- Botón final --}}
+      <button type="submit" class="btn-submit-glass">Guardar</button>
     </form>
 </div>
 
