@@ -1,7 +1,8 @@
 /* ====== Estilos Generales ====== */
 body {
     font-family: 'Figtree', sans-serif;
-    background-color: #EBE2E1;
+    background-image: linear-gradient(to bottom,#22305D,#EBE2E1 50%,rgba(200, 22, 23, 0.8));
+    min-height: 100vh; /* Asegura que ocupe al menos el 100% del alto de la pantalla */
 }
 
 /* ====== Contenedor Principal (Tarjeta glass) ====== */
@@ -20,65 +21,144 @@ body {
 .title {
     text-align: center;
     font-size: 2rem;
-    color: #22305D;
+    color: #ffffff;
     font-weight: bold;
     margin-bottom: 1.5rem;
 }
 
-/* ====== Formularios de Búsqueda ====== */
-.form-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-  margin-top: 2rem;
-  align-items: end;
+/* ====== input de Búsqueda ====== */
+.glass-form {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  max-width: 800px;
+  margin: 2rem auto;
 }
 
-.input-group {
+.glass-title {
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.6rem;
+}
+
+.glass-form-group {
   display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  width: 100%;
-}
-
-.input-group input {
-    padding: 0.5rem;
-    border-radius: 0.5rem;
-    border: none;
-    color: #000;
-}
-
-
-/* Botón con gradiente rojo que simula el color institucional */
-.btn-red-gradient {
-    background: linear-gradient(135deg, #C81617, #eb7e88);
-    justify-content: center;
-    margin-top: 1rem;
-    color: #fff;
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background 0.3s ease, transform 0.2s ease;
-}
-
-.input-button {
-  grid-column: span 3; /* Ocupa toda la fila del grid */
-  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
   justify-content: center;
-  margin-top: 1rem;
 }
 
-.input-button button {
-  width: 100%; /* o 100% si lo quieres máximo */
-  max-width: 400px;
+.glass-input {
+  flex: 1 1 200px;
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  border: none;
+  background: rgba(255, 255, 255, 0.08);
+  color: #303030;
+  font-size: 1rem;
 }
 
-/* Efecto hover para el botón degradado */
+.glass-input::placeholder {
+  color: #353535;
+}
+
+.glass-input:focus {
+  outline: none;
+  box-shadow: 0 0 5px #6896d3;
+}
+
+.btn-red-gradient {
+  background: linear-gradient(to right, #C81617, #EBE2E1);
+  color: black;
+  padding: 0.8rem 1.6rem;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
 .btn-red-gradient:hover {
-    background: linear-gradient(135deg, #a81213, #e06674);
-    transform: scale(1.05);
+  filter: brightness(0.95);
+  transform: scale(1.05);
+}
+
+/*Tarjeta para los resultados*/
+.resultado-consulta{
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  margin-top: 40px;
+}
+
+.glass-profile {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-between;
+}
+
+.glass-left, .glass-right {
+  flex: 1 1 400px;
+  background: rgba(255, 255, 255, 0.26);
+  padding: 1.5rem;
+  border-radius: 10px;
+}
+
+.glass-left p,
+.glass-right p {
+  color: #333333;
+  margin-bottom: 0.6rem;
+}
+
+.adjuntos-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.img-preview {
+  width: 160px;
+  text-align: center;
+}
+
+.img-preview img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.img-preview span {
+  display: block;
+  font-size: 0.85rem;
+  margin-top: 0.3rem;
+  color: #333333;
+}
+
+/*boton nueva busqueda*/
+.btn-nueva-busqueda {
+  display: inline-block;
+  background: linear-gradient(to right, #22305D, #030304);
+  color: #fff;
+  margin-top: 2rem;
+  padding: 0.6rem 1.4rem;
+  border-radius: 10px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.btn-nueva-busqueda:hover {
+  background: #1b263f;
+  transform: scale(1.05);
 }
 
 
@@ -121,3 +201,34 @@ body {
     padding: 0.9rem;
   }
 }
+
+/*responsive de los resultados*/
+@media (max-width: 768px) {
+  .glass-profile {
+    flex-direction: column;
+  }
+
+  .glass-left,
+  .glass-right {
+    flex: 1 1 100%;
+    padding: 1rem;
+  }
+
+  .img-preview {
+    width: 100%;
+    max-width: 300px;
+    margin: auto;
+  }
+
+  .glass-title {
+    text-align: center;
+    font-size: 1.4rem;
+  }
+
+  .btn-nueva-busqueda {
+    display: block;
+    margin: 2rem auto 0;
+    text-align: center;
+  }
+}
+

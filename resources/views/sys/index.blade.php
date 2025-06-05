@@ -24,14 +24,14 @@
     <div class="glass-box glass-licencias" data-aos="fade-up" data-aos-delay="100">
       <div class="glass-inner">
         <div class="glass-content">
-          <h2 class="glass-title">0</h2>
-          <p class="glass-subtitle">Licencias</p>
+          <h2 class="glass-title">{{ count($licenses) }}</h2>
+          <p class="glass-subtitle">Aplicantes</p>
         </div>
         <div class="glass-icon">
           <i class="fas fa-id-card"></i>
         </div>
       </div>
-      <a href="#" class="glass-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
+      <a href="{{ route('sys.applicants.index') }}" class="glass-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
     </div>
   </div>
 
