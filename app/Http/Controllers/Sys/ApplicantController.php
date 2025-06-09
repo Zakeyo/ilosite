@@ -65,6 +65,7 @@ class ApplicantController extends Controller
             'phone_2' => 'nullable|string',
             'passport_number' => 'nullable|string',
             'height_cm' => 'required|integer',
+            'gender' => 'required|in:M,F',
             'eye_color' => 'required|string',
             'blood_type' => 'required|string|in:A+,A-,B+,B-,AB+,AB-,O+,O-',
             'has_local_license' => 'required|boolean',
@@ -77,7 +78,9 @@ class ApplicantController extends Controller
             'photo' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'license_front' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'license_back' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
-            'extras.*' => 'nullable|file|mimes:jpeg,png,jpg,pdf|max:5120',
+            'extra_1' => 'nullable|file|mimes:jpeg,png,jpg,pdf|max:5120',
+            'extra_2' => 'nullable|file|mimes:jpeg,png,jpg,pdf|max:5120',
+            'extra_3' => 'nullable|file|mimes:jpeg,png,jpg,pdf|max:5120',
         ]);
 
         $digitalDurations = ['3m', '6m', '1y', '2y', '5y'];
@@ -97,7 +100,8 @@ class ApplicantController extends Controller
             $applicant = Applicant::create($request->only([
                 'first_name', 'last_name', 'id_number', 'birth_date', 'email',
                 'country_of_origin', 'address_1', 'address_2', 'phone_1', 'phone_2',
-                'passport_number', 'height_cm', 'eye_color', 'blood_type', 'has_local_license'
+                'passport_number', 'height_cm', 'eye_color', 'blood_type', 'has_local_license',
+                'gender'
             ]));
 
             $issuedAt = $request->issued_at ? Carbon::parse($request->issued_at) : now();
@@ -130,12 +134,9 @@ class ApplicantController extends Controller
                 ]);
             };
 
-            // if ($request->has_local_license) {
-            //     if (!$request->hasFile('photo')) {
-            //         return back()->withErrors(['photo' => 'Debe subir la foto tipo carnet.'])->withInput();
-            //     }
-            //     $saveAttachment($request->file('photo'), 'photo', $applicant);
-            // }
+            if ($request->hasFile('photo')) {
+                $saveAttachment($request->file('photo'), 'photo', $applicant);
+            }
 
             if ($request->hasFile('local_license_front')) {
                 $saveAttachment($request->file('local_license_front'), 'local_license_front', $applicant);
@@ -153,9 +154,9 @@ class ApplicantController extends Controller
                 $saveAttachment($request->file('license_back'), 'license_back', $license);
             }
 
-            if ($request->hasFile('extras')) {
-                foreach ($request->file('extras') as $extraFile) {
-                    $saveAttachment($extraFile, 'extra', $license);
+            foreach (['extra_1', 'extra_2', 'extra_3'] as $extraType) {
+                if ($request->hasFile($extraType)) {
+                    $saveAttachment($request->file($extraType), $extraType, $license);
                 }
             }
 
@@ -225,6 +226,7 @@ class ApplicantController extends Controller
             'height_cm' => 'required|integer|min:0|max:300',
             'eye_color' => 'required|string|max:255',
             'blood_type' => 'required|string|in:A+,A-,B+,B-,AB+,AB-,O+,O-',
+            'gender' => 'required|in:M,F',
             'has_local_license' => 'required|boolean',
             'transaction_number' => [
                 'required',
@@ -236,7 +238,9 @@ class ApplicantController extends Controller
             'local_license_back' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'license_front' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'license_back' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
-            'extras.*' => 'nullable|file|mimes:jpeg,png,jpg,pdf|max:5120',
+            'extra_1' => 'nullable|file|mimes:jpeg,png,jpg,pdf|max:5120',
+            'extra_2' => 'nullable|file|mimes:jpeg,png,jpg,pdf|max:5120',
+            'extra_3' => 'nullable|file|mimes:jpeg,png,jpg,pdf|max:5120',
         ]);
 
         DB::beginTransaction();
@@ -259,6 +263,7 @@ class ApplicantController extends Controller
                 'eye_color' => $request->eye_color,
                 'blood_type' => $request->blood_type,
                 'has_local_license' => $request->has_local_license,
+                'gender' => $request->gender,
             ]);
 
             // Actualizar número de transacción de la licencia
@@ -296,9 +301,9 @@ class ApplicantController extends Controller
                 $saveAttachment($request->file('license_back'), 'license_back', $license);
             }
 
-            if ($request->hasFile('extras')) {
-                foreach ($request->file('extras') as $extraFile) {
-                    $saveAttachment($extraFile, 'extra', $license);
+            foreach (['extra_1', 'extra_2', 'extra_3'] as $extraType) {
+                if ($request->hasFile($extraType)) {
+                    $saveAttachment($request->file($extraType), $extraType, $license);
                 }
             }
 

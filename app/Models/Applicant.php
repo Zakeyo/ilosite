@@ -13,8 +13,13 @@ class Applicant extends Model
     'first_name', 'last_name', 'id_number', 'birth_date', 'email',
     'country_of_origin', 'address_1', 'address_2', 'phone_1', 'phone_2',
     'passport_number', 'height_cm', 'eye_color', 'blood_type', 'has_local_license',
-    'birth_date' => 'date',
+    'gender',
     ];
+
+    protected $casts = [
+        'birth_date' => 'date',
+    ];
+
 
     public function license()
     {

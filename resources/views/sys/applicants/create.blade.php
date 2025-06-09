@@ -77,6 +77,24 @@
         </div>
 
         <div class="mb-3">
+            <label for="gender" class="form-label">Sexo</label>
+            <select name="gender" id="gender" class="form-select @error('gender') is-invalid @enderror" required>
+                <option value="" disabled {{ old('gender') ? '' : 'selected' }}>Selecciona sexo</option>
+                <option value="M" {{ old('gender') == 'M' ? 'selected' : '' }}>Masculino</option>
+                <option value="F" {{ old('gender') == 'F' ? 'selected' : '' }}>Femenino</option>
+            </select>
+            @error('gender')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
+
+        {{-- Foto tipo carnet --}}
+        <div class="mb-3">
+            <label for="photo" class="form-label">Foto tipo carnet</label>
+            <input type="file" name="photo" id="photo" class="form-control" accept="image/*">
+        </div>
+
+        <div class="mb-3">
             <label>Número de pasaporte</label>
             <input type="text" name="passport_number" class="form-control">
         </div>
@@ -168,10 +186,20 @@
             <input type="file" name="license_back" class="form-control">
         </div>
 
-        {{-- Archivos adicionales --}}
+        {{-- Archivos adicionales (opcional) --}}
         <div class="mb-3">
-            <label>Archivos adicionales (opcional)</label>
-            <input type="file" name="extras[]" multiple class="form-control">
+            <label for="extra_1" class="form-label">Archivo adicional 1</label>
+            <input type="file" name="extra_1" id="extra_1" class="form-control">
+        </div>
+
+        <div class="mb-3">
+            <label for="extra_2" class="form-label">Archivo adicional 2</label>
+            <input type="file" name="extra_2" id="extra_2" class="form-control">
+        </div>
+
+        <div class="mb-3">
+            <label for="extra_3" class="form-label">Archivo adicional 3</label>
+            <input type="file" name="extra_3" id="extra_3" class="form-control">
         </div>
     </div>
         {{-- Botón final --}}

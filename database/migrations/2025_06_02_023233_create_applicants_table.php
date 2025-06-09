@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('passport_number')->nullable();
             $table->unsignedSmallInteger('height_cm');
             $table->string('eye_color');
+            $table->enum('gender', ['M', 'F']);
             $table->string('blood_type');
             $table->boolean('has_local_license');
             $table->timestamps();

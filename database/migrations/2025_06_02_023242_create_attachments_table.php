@@ -13,11 +13,13 @@ return new class extends Migration
             $table->morphs('attachable'); // Crea attachable_id y attachable_type
             $table->enum('type', [
                 'photo',
-                'license_front',
-                'license_back',
-                'extra',
                 'local_license_front',
                 'local_license_back',
+                'license_front',
+                'license_back',
+                'extra_1',
+                'extra_2',
+                'extra_3',
             ]);
             $table->string('file_path');
             $table->timestamps();
