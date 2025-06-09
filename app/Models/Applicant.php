@@ -20,6 +20,10 @@ class Applicant extends Model
         'birth_date' => 'date',
     ];
 
+    public function licenseAttachments()
+    {
+        return $this->morphMany(Attachment::class, 'attachable')->whereIn('type', ['license_front', 'license_back']);
+    }
 
     public function license()
     {

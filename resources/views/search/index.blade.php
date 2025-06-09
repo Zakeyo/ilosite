@@ -70,24 +70,24 @@
         @endif
 
         <h3>📎 Archivos Adjuntos</h3>
-        @if($applicant->attachments->count())
-          <div class="adjuntos-grid">
-            @foreach($applicant->attachments as $attachment)
-              @if(Str::endsWith($attachment->file_path, ['.jpg', '.jpeg', '.png', '.webp']))
-                <div class="img-preview">
-                  <a href="{{ asset('storage/' . $attachment->file_path) }}" target="_blank">
-                    <img src="{{ asset('storage/' . $attachment->file_path) }}" alt="{{ $attachment->type }}">
-                  </a>
-                    <span>{{ ucfirst(str_replace('_', ' ', $attachment->type)) }}</span>
-                </div>
 
-              @else
-                <p><a href="{{ asset('storage/' . $attachment->file_path) }}" target="_blank">{{ $attachment->type }}</a></p>
-              @endif
-            @endforeach
-          </div>
+        @if($applicant && $applicant->license && $applicant->license->attachments->count())
+            <div class="adjuntos-grid">
+                @foreach($applicant->license->attachments->whereIn('type', ['license_front', 'license_back']) as $attachment)
+                    @if(Str::endsWith($attachment->file_path, ['.jpg', '.jpeg', '.png', '.webp']))
+                        <div class="img-preview">
+                            <a href="{{ asset('storage/' . $attachment->file_path) }}" target="_blank">
+                                <img src="{{ asset('storage/' . $attachment->file_path) }}" alt="{{ $attachment->type }}">
+                            </a>
+                            <span>{{ ucfirst(str_replace('_', ' ', $attachment->type)) }}</span>
+                        </div>
+                    @else
+                        <p><a href="{{ asset('storage/' . $attachment->file_path) }}" target="_blank">{{ $attachment->type }}</a></p>
+                    @endif
+                @endforeach
+            </div>
         @else
-          <p>No hay archivos cargados.</p>
+            <p>No hay archivos cargados.</p>
         @endif
       </div>
           <div class="glass-reload mt-4">

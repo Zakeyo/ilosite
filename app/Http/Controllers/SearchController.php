@@ -8,22 +8,21 @@ use Illuminate\Http\Request;
 class SearchController extends Controller
 {
     public function index(Request $request)
-{
-    $applicant = null;
+    {
+        $applicant = null;
 
-    if ($request->has(['tipo', 'valor'])) {
-        $tipo = $request->input('tipo');
-        $valor = $request->input('valor');
+        if ($request->has(['tipo', 'valor'])) {
+            $tipo = $request->input('tipo');
+            $valor = $request->input('valor');
 
-        // Búsqueda condicional
-        $applicant = match ($tipo) {
-        'cedula' => Applicant::with(['license', 'attachments'])->where('id_number', $valor)->first(),
-        'pasaporte' => Applicant::with(['license', 'attachments'])->where('passport_number', $valor)->first(),
-        'licencia' => Applicant::whereHas('license', fn($q) => $q->where('transaction_number', $valor))->with(['license', 'attachments'])->first(),default => null,
-};
+            $applicant = match ($tipo) {
+                'cedula' => Applicant::with(['license', 'licenseAttachments'])->where('id_number', $valor)->first(),
+                'pasaporte' => Applicant::with(['license', 'licenseAttachments'])->where('passport_number', $valor)->first(),
+                'licencia' => Applicant::with(['license', 'licenseAttachments'])->whereHas('license', fn($q) => $q->where('transaction_number', $valor))->first(),
+                default => null,
+            };
+        }
 
+        return view('search.index', compact('applicant'));
     }
-
-    return view('search.index', compact('applicant'));
-}
 }
