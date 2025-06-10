@@ -143,6 +143,38 @@ body {
   color: #333333;
 }
 
+.imagen-protegida {
+  pointer-events: none;               /* Desactiva clics */
+  user-select: none;                  /* No se puede seleccionar */
+  -webkit-user-drag: none;            /* No se puede arrastrar en Webkit */
+}
+
+.bloqueo-capa {
+  position: relative;
+  display: inline-block;
+}
+.bloqueo-capa::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: transparent;
+  z-index: 2;
+}
+
+.canvas-licencia-wrapper {
+  display: inline-block;
+  margin: 1rem;
+}
+
+.canvas-protegido {
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  user-select: none;
+  pointer-events: none;
+}
+
+
+
 /*boton nueva busqueda*/
 .btn-nueva-busqueda {
   display: inline-block;

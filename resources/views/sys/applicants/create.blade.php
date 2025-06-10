@@ -19,64 +19,91 @@
         @csrf
 
         {{-- Seccion Informacion personal --}}
-    <div class="glass-section">
+<div class="glass-section">
       <h3 class="glass-section-title">Información personal</h3>
 
-        <div class="mb-3">
+    <div class="form-row">  
+        <div class="form-group">
             <label>Nombre</label>
             <input type="text" name="first_name" class="form-control" required>
         </div>
 
-        <div class="mb-3">
+        <div class="form-group">
             <label>Apellido</label>
             <input type="text" name="last_name" class="form-control" required>
         </div>
+    </div>
 
-        <div class="mb-3">
+    <div class="form-row">
+        <div class="form-group">
             <label>Cédula o ID</label>
             <input type="text" name="id_number" class="form-control" required>
         </div>
 
-        <div class="mb-3">
+        <div class="form-group">
             <label>Fecha de nacimiento</label>
             <input type="date" name="birth_date" class="form-control" required>
         </div>
-
-        <div class="mb-3">
+    </div>
+    
+    <div class="form-row">
+        <div class="form-group">
             <label>Email</label>
             <input type="email" name="email" class="form-control">
         </div>
 
-        <div class="mb-3">
+        @php
+            $countries = config('countries');
+        @endphp
+
+        <div class="form-group">
             <label>País de origen</label>
             <select name="country_of_origin" class="form-select" required>
-                @foreach($countries as $country)
-                    <option value="{{ $country }}">{{ $country }}</option>
+                <option value="" disabled selected>Seleccione un país</option>
+                @foreach($countries as $code => $country)
+                    @php
+                        // Genera el emoji de bandera (versión mejorada)
+                        $emoji = mb_convert_encoding(
+                            '&#' . (127397 + ord($code[0])) . ';' . 
+                            '&#' . (127397 + ord($code[1])) . ';',
+                            'UTF-8',
+                            'HTML-ENTITIES'
+                        );
+                    @endphp
+                    <option value="{{ $code }}">{!! $emoji !!} {{ $country }}</option>
                 @endforeach
             </select>
         </div>
 
-        <div class="mb-3">
+    </div>
+
+    <div class="form-row">
+        <div class="form-group">
             <label>Dirección 1</label>
             <input type="text" name="address_1" class="form-control" required>
         </div>
 
-        <div class="mb-3">
+        <div class="form-group">
             <label>Dirección 2 (opcional)</label>
             <input type="text" name="address_2" class="form-control">
         </div>
+    </div>
 
-        <div class="mb-3">
+    <div class="form-row">
+        <div class="form-group">
             <label>Teléfono 1</label>
             <input type="text" name="phone_1" class="form-control" required>
         </div>
 
-        <div class="mb-3">
+        <div class="form-group">
             <label>Teléfono 2 (opcional)</label>
             <input type="text" name="phone_2" class="form-control">
         </div>
+    </div>
 
-        <div class="mb-3">
+    
+    <div class="form-row">
+        <div class="form-group">
             <label for="gender" class="form-label">Sexo</label>
             <select name="gender" id="gender" class="form-select @error('gender') is-invalid @enderror" required>
                 <option value="" disabled {{ old('gender') ? '' : 'selected' }}>Selecciona sexo</option>
@@ -87,39 +114,44 @@
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror
         </div>
-
-        {{-- Foto tipo carnet --}}
-        <div class="mb-3">
-            <label for="photo" class="form-label">Foto tipo carnet</label>
-            <input type="file" name="photo" id="photo" class="form-control" accept="image/*">
-        </div>
-
-        <div class="mb-3">
+        
+        <div class="form-group">
             <label>Número de pasaporte</label>
             <input type="text" name="passport_number" class="form-control">
         </div>
-
-        <div class="mb-3">
+    </div>
+    
+    <div class="form-row">
+        <div class="form-group">
             <label>Altura (cm)</label>
             <input type="number" name="height_cm" class="form-control" required>
         </div>
-
-        <div class="mb-3">
+        
+        <div class="form-group">
             <label>Color de ojos</label>
             <input type="text" name="eye_color" class="form-control" required>
         </div>
-
-        <div class="mb-3">
+    </div>
+    
+    <div class="form-row">
+        <div class="form-group">
             <label>Tipo de sangre</label>
             <select name="blood_type" class="form-select" required>
                 <option value="">Seleccione</option>
                 @foreach(['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'] as $type)
-                    <option value="{{ $type }}">{{ $type }}</option>
+                <option value="{{ $type }}">{{ $type }}</option>
                 @endforeach
             </select>
         </div>
+        
+        {{-- Foto tipo carnet --}}
+        <div class="form-group">
+            <label>Foto tipo carnet</label>
+            <input type="file" name="photo" id="photo" class="form-control" accept="image/*">
+        </div>
+    </div>
 
-        <div class="mb-3">
+        <div class="form-group">
             <label>¿Posee licencia en su país?</label>
             <select name="has_local_license" id="has_local_license" class="form-select" required>
                 <option value="0">No</option>
@@ -128,24 +160,24 @@
         </div>
 
         {{-- Archivos de licencia local si posee --}}
-        <div id="local_license_photos" style="display: none;">
-            <div class="mb-3">
+        <div id="local_license_photos" class="form-row" style="display: none;">
+            <div class="form-group">
                 <label>Imagen frontal de la licencia</label>
                 <input type="file" name="local_license_front" class="form-control">
             </div>
-            <div class="mb-3">
+            <div class="form-group">
                 <label>Imagen trasera de la licencia</label>
                 <input type="file" name="local_license_back" class="form-control">
             </div>
         </div>
-    </div>
+</div>
 
     <div class="glass-section">
       <h3 class="glass-section-title">Datos de la licencia</h3>
 
         {{-- Datos de la licencia que se va a generar --}}
-
-        <div class="mb-3">
+    <div class="form-row">
+        <div class="form-group">
             <label>Tipo de licencia</label>
             <select name="license_type" id="license_type" class="form-select" required>
                 <option value="">Seleccione</option>
@@ -154,12 +186,13 @@
             </select>
         </div>
 
-        <div class="mb-3">
-            <label>Duración</label>
+        <div class="form-group">
+            <label>Duración (seleccionar tipo de licencia)</label>
             <select name="duration" id="duration" class="form-select" required>
                 {{-- Opciones dinámicas con JS --}}
             </select>
         </div>
+    </div>
 
         <div class="mb-3">
             <label>Categorías</label><br>
@@ -176,32 +209,42 @@
             <input type="text" name="transaction_number" class="form-control" required>
         </div>
 
+    <div class="form-row">
         {{-- Imagen frontal y trasera de la licencia a entregar --}}
-        <div class="mb-3">
+        <div class="form-group">
             <label>Imagen frontal de la licencia generada</label>
             <input type="file" name="license_front" class="form-control">
         </div>
-        <div class="mb-3">
+        <div class="form-group">
             <label>Imagen trasera de la licencia generada</label>
             <input type="file" name="license_back" class="form-control">
         </div>
+    </div>
 
-        {{-- Archivos adicionales (opcional) --}}
-        <div class="mb-3">
+    {{-- Botón para mostrar más archivos --}}
+    <div class="form-group mt-2">
+        <label>Archivos Adicionales</label>
+        <button type="button" id="addExtraFileBtn" class="btn-agregar">➕ Agregar archivo adicional</button>
+    </div>
+
+    {{-- Contenedor oculto con los campos adicionales --}}
+    <div id="extraFilesContainer">
+        <div class="mb-3 extra-file d-none">
             <label for="extra_1" class="form-label">Archivo adicional 1</label>
             <input type="file" name="extra_1" id="extra_1" class="form-control">
         </div>
 
-        <div class="mb-3">
+        <div class="mb-3 extra-file d-none">
             <label for="extra_2" class="form-label">Archivo adicional 2</label>
             <input type="file" name="extra_2" id="extra_2" class="form-control">
         </div>
 
-        <div class="mb-3">
+        <div class="mb-3 extra-file d-none">
             <label for="extra_3" class="form-label">Archivo adicional 3</label>
             <input type="file" name="extra_3" id="extra_3" class="form-control">
         </div>
     </div>
+
         {{-- Botón final --}}
       <button type="submit" class="btn-submit-glass">Guardar</button>
     </form>
@@ -215,7 +258,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const duration = document.getElementById('duration');
 
     hasLicense.addEventListener('change', function () {
-        licensePhotos.style.display = this.value == '1' ? 'block' : 'none';
+        licensePhotos.style.display = this.value == '1' ? 'flex' : 'none';
     });
 
     licenseType.addEventListener('change', function () {
@@ -239,5 +282,24 @@ document.addEventListener('DOMContentLoaded', function () {
         duration.innerHTML = options;
     });
 });
+</script>
+
+{{-- js de boton para archivos adicionales --}}
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const addBtn = document.getElementById('addExtraFileBtn');
+    const extras = document.querySelectorAll('.extra-file');
+    let index = 0;
+
+    addBtn.addEventListener('click', () => {
+      if (index < extras.length) {
+        extras[index].classList.remove('d-none');
+        index++;
+      } else {
+        addBtn.disabled = true;
+        addBtn.innerText = "Has agregado el máximo de archivos.";
+      }
+    });
+  });
 </script>
 @endsection

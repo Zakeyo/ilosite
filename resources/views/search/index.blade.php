@@ -38,6 +38,24 @@
 <div class="glass-card mt-10 resultado-consulta" >
   <h2 class="glass-title">🧾 Resultado de la búsqueda</h2>
 
+  @php
+  $emoji = '';
+  if ($applicant && $applicant->country_of_origin) {
+      $allCountries = config('countries');
+      $paisNombre = $applicant->country_of_origin;
+      $codigo = array_search($paisNombre, $allCountries);
+      $emoji = $codigo
+        ? mb_convert_encoding(
+            '&#' . (127397 + ord($codigo[0])) . ';' .
+            '&#' . (127397 + ord($codigo[1])) . ';',
+            'UTF-8',
+            'HTML-ENTITIES'
+          )
+        : '';
+  }
+@endphp
+
+
   @if($applicant)
     <div class="glass-profile" data-aos="fade-up">
       <!-- COLUMNA IZQUIERDA -->
@@ -46,7 +64,7 @@
         <p><strong>Nombre completo:</strong> {{ $applicant->first_name }} {{ $applicant->last_name }}</p>
         <p><strong>Cédula / ID:</strong> {{ $applicant->id_number }}</p>
         <p><strong>Correo:</strong> {{ $applicant->email ?? 'No especificado' }}</p>
-        <p><strong>País:</strong> {{ $applicant->country_of_origin ?? 'No especificado' }}</p>
+        <p><strong>País:</strong> {!! $emoji !!} {{ $paisNombre ?? 'No especificado' }}</p>
         <p><strong>Dirección:</strong> {{ $applicant->address_1 ?? 'No especificada' }}</p>
         <p><strong>Teléfono:</strong> {{ $applicant->phone_1 ?? 'No registrado' }}</p>
         <p><strong>Pasaporte:</strong> {{ $applicant->passport_number ?? 'No registrado' }}</p>
@@ -75,11 +93,14 @@
             <div class="adjuntos-grid">
                 @foreach($applicant->license->attachments->whereIn('type', ['license_front', 'license_back']) as $attachment)
                     @if(Str::endsWith($attachment->file_path, ['.jpg', '.jpeg', '.png', '.webp']))
-                        <div class="img-preview">
-                            <a href="{{ asset('storage/' . $attachment->file_path) }}" target="_blank">
-                                <img src="{{ asset('storage/' . $attachment->file_path) }}" alt="{{ $attachment->type }}">
-                            </a>
-                            <span>{{ ucfirst(str_replace('_', ' ', $attachment->type)) }}</span>
+                        <div class="canvas-licencia-wrapper img-preview bloqueo-capa">
+                            <canvas
+                              class="canvas-protegido"
+                              width="200"
+                              height="200"
+                              data-src="{{ asset('storage/' . $attachment->file_path) }}"
+                            ></canvas>
+                            <p class="canvas-label">{{ ucfirst(str_replace('_', ' ', $attachment->type)) }}</p>
                         </div>
                     @else
                         <p><a href="{{ asset('storage/' . $attachment->file_path) }}" target="_blank">{{ $attachment->type }}</a></p>
@@ -90,9 +111,6 @@
             <p>No hay archivos cargados.</p>
         @endif
       </div>
-          <div class="glass-reload mt-4">
-            <a href="{{ route('search') }}" class="btn-nueva-busqueda">🔄 Nueva búsqueda</a>
-          </div>
     </div>
   @else
     <div class="glass-card mt-5" data-aos="fade-in">
@@ -100,6 +118,9 @@
     </div>
   @endif
 
+  <div class="glass-reload mt-4">
+      <a href="{{ route('search') }}" class="btn-nueva-busqueda">🔄 Nueva búsqueda</a>
+  </div>
 </div>
 @endif
 
@@ -118,6 +139,27 @@
             AOS.init({ once: false, duration: 800 });
         });
     </script>
-    
+
+    {{-- script para dibujar imagen con canvas --}}
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+        const canvases = document.querySelectorAll('.canvas-protegido');
+
+        canvases.forEach(canvas => {
+            const ctx = canvas.getContext('2d');
+            const src = canvas.dataset.src;
+            const img = new Image();
+            img.crossOrigin = 'anonymous';
+            img.src = src;
+
+            img.onload = () => {
+                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+            };
+
+            canvas.addEventListener('contextmenu', e => e.preventDefault());
+        });
+    });
+    </script>
+ 
 </body>
 </html>
