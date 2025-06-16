@@ -67,6 +67,15 @@
             </li>
 
             <li class="nav-item">
+              <a href="{{ route('sys.referreds.index') }}" class="nav-link {{ request()->routeIs('sys.referreds.*') ? 'active' : '' }}">
+                <i class="nav-icon fas">
+                  <i class="bi bi-diagram-2-fill"></i>
+                </i>
+                  <p>Referidos</p>
+              </a>
+            </li>
+
+            <li class="nav-item">
               <a href="{{ route('sys.users.index') }}" class="nav-link {{ request()->routeIs('sys.users.*') ? 'active' : '' }}">
                 <i class="nav-icon fas">
                   <i class="bi bi-person-badge-fill"></i>

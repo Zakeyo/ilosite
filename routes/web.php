@@ -11,6 +11,7 @@ use App\Http\Controllers\Sys\UserController;
 use App\Http\Controllers\Sys\SysController;
 use App\Http\Controllers\Sys\ApplicantController;
 use App\Http\Controllers\Sys\LicenseController;
+use App\Http\Controllers\Sys\ReferredController;
 
 // Página de inicio
 Route::get('/', WelcomeController::class)->name('welcome');
@@ -24,6 +25,7 @@ Route::middleware(['auth'])->prefix('sys')->group(function () {
 
     Route::resource('/applicants', ApplicantController::class)->names('sys.applicants');
     Route::resource('/licenses', LicenseController::class)->names('sys.license');
+    Route::resource('/referreds', ReferredController::class)->names('sys.referreds');
     Route::resource('/users', UserController::class)->names('sys.users');
 });
 

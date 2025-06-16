@@ -11,6 +11,7 @@ use Illuminate\Validation\Rule;
 
 use App\Models\Applicant;
 use App\Models\License;
+use App\Models\Referred;
 
 class ApplicantController extends Controller
 {
@@ -25,6 +26,7 @@ class ApplicantController extends Controller
 
     public function create()
     {
+        $referreds = Referred::all();
         // Lista de países desde config/countries.php
         $countries = config('countries');
 
@@ -44,7 +46,8 @@ class ApplicantController extends Controller
             'countries',
             'bloodTypes',
             'licenseCategories',
-            'durations'
+            'durations',
+            'referreds'
         ));
     }
 
@@ -66,6 +69,7 @@ class ApplicantController extends Controller
             'passport_number' => 'nullable|string',
             'height_cm' => 'required|integer',
             'gender' => 'required|in:M,F',
+            'referred_id' => 'nullable|exists:referreds,id',
             'eye_color' => 'required|string',
             'blood_type' => 'required|string|in:A+,A-,B+,B-,AB+,AB-,O+,O-',
             'has_local_license' => 'required|boolean',
@@ -227,6 +231,7 @@ class ApplicantController extends Controller
             'eye_color' => 'required|string|max:255',
             'blood_type' => 'required|string|in:A+,A-,B+,B-,AB+,AB-,O+,O-',
             'gender' => 'required|in:M,F',
+            'referred_id' => 'nullable|exists:referreds,id',
             'has_local_license' => 'required|boolean',
             'transaction_number' => [
                 'required',

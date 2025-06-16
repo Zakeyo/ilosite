@@ -120,6 +120,21 @@
             <input type="text" name="passport_number" class="form-control">
         </div>
     </div>
+
+    <div class="mb-3">
+            <label for="referred_id" class="form-label">Referido por</label>
+            <select name="referred_id" class="form-select">
+                <option value="">Nadie</option>
+                @foreach($referreds as $referred)
+                    <option value="{{ $referred->id }}" {{ old('referred_id') == $referred->id ? 'selected' : '' }}>
+                        {{ $referred->first_name }} {{ $referred->last_name }}
+                    </option>
+                @endforeach
+            </select>
+            @error('referred_id')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
     
     <div class="form-row">
         <div class="form-group">

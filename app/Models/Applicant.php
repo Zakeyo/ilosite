@@ -34,4 +34,10 @@ class Applicant extends Model
     {
         return $this->morphMany(Attachment::class, 'attachable');
     }
+
+    public function referred()
+    {
+        return $this->belongsTo(Referred::class);
+    }
+
 }

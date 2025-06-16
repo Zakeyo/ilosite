@@ -29,6 +29,7 @@ return new class extends Migration
             $table->enum('gender', ['M', 'F']);
             $table->string('blood_type');
             $table->boolean('has_local_license');
+            $table->foreignId('referred_id')->nullable()->constrained('referreds')->nullOnDelete();
             $table->timestamps();
         });
     }
