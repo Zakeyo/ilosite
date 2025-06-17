@@ -2,13 +2,15 @@
 @section('content')
 
 <div class="glass-card">
-  <h2>Detalle del Usuario</h2>
+  <h1 class="glass-title">Detalles del Usuario</h1>
 
-  <div class="info-user">
-    <p><span class="label">🆔 ID:</span> {{ $user->id }}</p>
-    <p><span class="label">👤 Nombre:</span> {{ $user->name }}</p>
-    <p><span class="label">📧 Email:</span> {{ $user->email }}</p>
-    <p><span class="label">📅 Creado:</span> {{ $user->created_at->format('d/m/Y H:i') }}</p>
+  <div class="glass-section">
+    <ul class="glass-info">
+      <li><strong>ID:</strong> {{ $user->id }}</li>
+      <li><strong>Nombre:</strong> {{ $user->name }}</li>
+      <li><strong>Email:</strong> {{ $user->email }}</li>
+      <li><strong>Creado:</strong> {{ $user->created_at->format('d/m/Y H:i') }}</li>
+    </ul>
   </div>
 
   <a href="{{ route('sys.users.index') }}" class="btn-back">← Volver</a>

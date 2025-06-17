@@ -238,20 +238,20 @@ justify-content: flex-end;
 
 /* Tarjeta: USUARIOS */
 .glass-usuarios {
-  background: linear-gradient(to bottom right, rgba(104, 150, 211, 0.6), rgba(34, 48, 93, 0.4));
+  background: linear-gradient(to bottom right, rgb(104, 150, 211), rgb(34, 48, 93));
   border-left: 4px solid #EBE2E1;
 }
 
 /* Tarjeta: LICENCIAS */
 .glass-licencias {
-  background: linear-gradient(to bottom right, rgba(104, 150, 211, 0.6), rgba(34, 48, 93, 0.4));
+  background: linear-gradient(to bottom right, rgb(104, 150, 211), rgb(34, 48, 93));
   border-left: 4px solid #fff;
 }
 
 /* Tarjeta: CONSULTAS */
 .glass-consultas {
-  background: linear-gradient(to bottom right, rgba(104, 150, 211, 0.6), rgba(34, 48, 93, 0.4));
-  border-left: 4px solid #b3d4fc;
+  background: linear-gradient(to bottom right, rgb(104, 150, 211), rgb(34, 48, 93));
+  border-left: 4px solid #ffffff;
 }
 
 /* Tarjeta: MENSAJES
@@ -412,7 +412,7 @@ justify-content: flex-end;
   margin: 2rem auto;
   max-width: 1000px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-  color: #ffffff;
+  color: #4e4e4e;
 }
 
 .header-actions {
@@ -420,25 +420,6 @@ justify-content: flex-end;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1rem;
-}
-
-.btn-create {
-  background: #6ba86b;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  color: #fff;
-  text-decoration: none;
-  font-weight: bold;
-  transition: 0.3s;
-}
-
-.btn-create:hover {
-  background: #2fb414;
-  color: white;
-}
-
-.table-container {
-  overflow-x: auto;
 }
 
 .glass-table {
@@ -459,15 +440,7 @@ justify-content: flex-end;
   font-weight: bold;
 }
 
-.btn-glass {
-  padding: 0.4rem 0.8rem;
-  border-radius: 6px;
-  font-size: 0.85rem;
-  text-decoration: none;
-  font-weight: 600;
-  margin-right: 0.3rem;
-  transition: 0.3s ease;
-}
+
 
 .btn-glass.edit {
   background: #6896d3;
@@ -548,28 +521,20 @@ justify-content: flex-end;
 
 /*Seccion aplicantes*/
 .glass-form-container {
-  background: rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(10px);
+  background: #ffffff0f;
+  backdrop-filter: blur(3px);
   padding: 2rem;
   border-radius: 18px;
   box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
-  color: #EBE2E1;
+  color: #4e4e4e;
   max-width: 900px;
   margin: 2rem auto;
-}
-
-.glass-section {
-  margin-bottom: 2rem;
-  padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .glass-section-title {
   font-size: 1.2rem;
   font-weight: bold;
-  color: #EBE2E1;
+  color: #4e4e4e;
   margin-bottom: 1rem;
   border-left: 4px solid #C81617;
   padding-left: 0.8rem;
@@ -591,11 +556,11 @@ justify-content: flex-end;
 .glass-form input,
 .glass-form select,
 .glass-form textarea {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
+  background: rgb(255, 255, 255);
+  border: 1px solid rgb(255, 255, 255);
+  border-radius: 20px;
   padding: 0.7rem;
-  color: rgb(255, 255, 255);
+  color: #4e4e4e;
   width: 100%;
   transition: border 0.3s;
   height: fit-content;
@@ -603,15 +568,18 @@ justify-content: flex-end;
 
 .glass-form input:focus {
   outline: none;
-  background: rgba(255, 255, 255, 0.1);
-  color: rgb(255, 255, 255);
+  background: rgb(255, 255, 255);
+  color: #4e4e4e;
+  border: 1px solid rgb(255, 255, 255);
+  box-shadow: 0 0 5px #1848e6;
 }
 
 .glass-form select:focus {
   outline: none;
-  border: 2px solid #b5d2f5b2;
-  box-shadow: 0 0 10px #6896d3;
-  color: rgb(0, 0, 0);
+  background: rgb(255, 255, 255);
+  color: #4e4e4e;
+  outline: none;
+  box-shadow: 0 0 7px #1848e6;
 }
 
 .btn-submit-glass {
@@ -638,28 +606,8 @@ justify-content: flex-end;
   min-width: 240px;
 }
 
-.form-group label {
-  font-weight: bold;
-  color: #EBE2E1;
-  display: block;
-  margin-bottom: 0.3rem;
-}
-
-.form-group input {
-  width: 100%;
-  padding: 0.6rem 0.8rem;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.08);
-  color: white;
-}
-
 .form-group input::placeholder {
   color: #ccc;
-}
-
-.form-group input:focus {
-  outline: none;
-  box-shadow: 0 0 5px #6896d3;
 }
 
 .btn-submit-glass:hover {
@@ -704,25 +652,25 @@ justify-content: flex-end;
 .glass-table {
   width: 100%;
   border-collapse: collapse;
-  background-color: rgba(255, 255, 255, 0.02);
-  border-radius: 12px;
+  background-color: #ffffff38;
+  border-radius: 10px;
   overflow: hidden;
 }
 
 .glass-table th,
 .glass-table td {
   padding: 0.8rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  color: #EBE2E1;
+  border-bottom: 1px solid rgba(126, 126, 126, 0.349);
+  color: #4e4e4e;
 }
 
 .glass-table th {
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: rgba(99, 99, 99, 0.322);
   font-weight: bold;
 }
 
 .glass-table tr:hover {
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: rgba(255, 255, 255, 0.473);
 }
 
 /* Badges */
@@ -781,11 +729,11 @@ justify-content: flex-end;
 
 /*Show de aplicantes*/
 .glass-card {
-  background: rgba(255, 255, 255, 0.05);
+  background: #ffffff0f;
   backdrop-filter: blur(10px);
   border-radius: 16px;
   padding: 2rem;
-  color: #EBE2E1;
+  color: #4e4e4e;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
   max-width: 900px;
   margin: auto;
@@ -793,22 +741,16 @@ justify-content: flex-end;
 
 .glass-title {
   font-size: 1.8rem;
-  color: #fff;
+  color: #363636;
   margin-bottom: 1.5rem;
 }
 
 .glass-section {
   margin-bottom: 2rem;
   padding: 1.5rem;
-  background-color: rgba(255, 255, 255, 0.02);
+  background-color: #92929234;
   border-radius: 12px;
   border-left: 4px solid #C81617;
-}
-
-.glass-section-title {
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
-  color: #EBE2E1;
 }
 
 .glass-info {
@@ -818,12 +760,16 @@ justify-content: flex-end;
 
 .glass-info li {
   padding: 0.4rem 0;
-  border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+  border-bottom: 1px dashed rgba(90, 90, 90, 0.384);
 }
 
 .glass-files li a {
   color: #6896d3;
   text-decoration: underline;
+}
+
+.glass-files li a:hover {
+  color: #486a96;
 }
 
 .btn-volver {
@@ -841,6 +787,26 @@ justify-content: flex-end;
   background: #1b263f;
 }
 
+/*boton para ver archivos guardados*/
+.btn-archivo-actual {
+  display: inline-block;
+  padding: 0.45rem 1rem;
+  background: linear-gradient(90deg, #22305D, #030304);
+  color: #ffffff;
+  font-size: 0.9rem;
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.btn-archivo-actual:hover {
+  background: linear-gradient(90deg, #2f4b87, #111112);
+  color: #11b666;
+  transform: scale(1.05);
+  text-decoration: none;
+}
 
 /*seccion footer*/
 /* === Footer === */
@@ -890,8 +856,7 @@ justify-content: flex-end;
   }
 
   .btn-glass.submit,
-  .btn-back,
-  .btn-create {
+  .btn-back {
     width: 100%;
     text-align: center;
     font-size: 1rem;

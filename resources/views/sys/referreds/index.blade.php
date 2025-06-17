@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="container">
+<div class="glass-card">
 
     @if(session('success'))
         <div class="alert alert-success">
@@ -17,11 +17,13 @@
     @endif
 
 
-    <h1>Listado de Referidos</h1>
+    <h1 class="glass-title">Listado de Referidos</h1>
 
-    <a href="{{ route('sys.referreds.create') }}" class="btn btn-primary mb-3">Agregar Referido</a>
+    <a href="{{ route('sys.referreds.create') }}" class="btn-agregar mb-3">+ Agregar Referido</a>
 
-    <table class="table table-bordered table-striped">
+<div class="glass-section mt-3">
+<div class="table-responsive">
+    <table class="glass-table">
         <thead>
             <tr>
                 <th>Nombre completo</th>
@@ -43,13 +45,13 @@
                     </td>
                     <td>{{ $referred->country }}</td>
                     <td>
-                        <a href="{{ route('sys.referreds.show', $referred) }}" class="btn btn-sm btn-info">Ver</a>
-                        <a href="{{ route('sys.referreds.edit', $referred) }}" class="btn btn-sm btn-secondary">Editar</a>
+                        <a href="{{ route('sys.referreds.show', $referred) }}" class="btn-accion btn-ver">Ver</a>
+                        <a href="{{ route('sys.referreds.edit', $referred) }}" class="btn-accion btn-editar">Editar</a>
 
                         <form action="{{ route('sys.referreds.destroy', $referred) }}" method="POST" style="display: inline-block;" onsubmit="return confirm('¿Seguro que deseas eliminar este referido?');">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
+                            <button type="submit" class="btn-accion btn-eliminar">Eliminar</button>
                         </form>
                     </td>
                 </tr>
@@ -60,7 +62,8 @@
             @endforelse
         </tbody>
     </table>
-
+</div>
+</div>
     {{ $referreds->links() }}
 </div>
 

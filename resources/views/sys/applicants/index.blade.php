@@ -2,10 +2,11 @@
 
 @section('content')
 <div class="glass-card">
-  <h1 class="glass-title">📋 Listado de Solicitantes</h1>
+  <h1 class="glass-title">Listado de Solicitantes</h1>
 
   <a href="{{ route('sys.applicants.create') }}" class="btn-agregar mb-3">+ Agregar Solicitante</a>
 
+<div class="glass-section mt-3">
   <div class="table-responsive">
     <table class="glass-table">
       <thead>
@@ -61,6 +62,7 @@
       </tbody>
     </table>
   </div>
+</div>
 
   {{ $applicants->links() }}<!-- Paginación -->
 </div>

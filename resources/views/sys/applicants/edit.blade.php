@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="glass-form-container">
-    <h2 class="glass-title">✏️ Editar Solicitante</h2>
+    <h2 class="glass-title">Editar Solicitante</h2>
 
     @if ($errors->any())
         <div class="alert alert-danger">
@@ -23,32 +23,37 @@
     <div class="glass-section">
       <h3 class="glass-section-title">Información personal</h3>
 
-        <div class="mb-3">
+    <div class="form-row">
+        <div class="form-group">
             <label>Nombres</label>
             <input type="text" name="first_name" class="form-control" value="{{ old('first_name', $applicant->first_name) }}" required>
         </div>
 
-        <div class="mb-3">
+        <div class="form-group">
             <label>Apellidos</label>
             <input type="text" name="last_name" class="form-control" value="{{ old('last_name', $applicant->last_name) }}" required>
         </div>
+    </div>
 
-        <div class="mb-3">
+    <div class="form-row">
+        <div class="form-group">
             <label>Cédula / ID</label>
             <input type="text" name="id_number" class="form-control" value="{{ old('id_number', $applicant->id_number) }}" required>
         </div>
 
-        <div class="mb-3">
+        <div class="form-group">
             <label>Fecha de nacimiento</label>
             <input type="date" name="birth_date" class="form-control" value="{{ old('birth_date', optional($applicant->birth_date)->format('Y-m-d')) }}" required>
         </div>
+    </div>
 
-        <div class="mb-3">
+    <div class="form-row">
+        <div class="form-group">
             <label>Email</label>
             <input type="email" name="email" class="form-control" value="{{ old('email', $applicant->email) }}">
         </div>
 
-        <div class="mb-3">
+        <div class="form-group">
             <label>País de origen</label>
             <select name="country_of_origin" class="form-select" required>
                 @foreach($countries as $country)
@@ -56,43 +61,51 @@
                 @endforeach
             </select>
         </div>
+    </div>
 
-        <div class="mb-3">
+    <div class="form-row">
+        <div class="form-group">
             <label>Dirección 1</label>
             <input type="text" name="address_1" class="form-control" value="{{ old('address_1', $applicant->address_1) }}" required>
         </div>
 
-        <div class="mb-3">
+        <div class="form-group">
             <label>Dirección 2 (opcional)</label>
             <input type="text" name="address_2" class="form-control" value="{{ old('address_2', $applicant->address_2) }}">
         </div>
+    </div>
 
-        <div class="mb-3">
+    <div class="form-row">
+        <div class="form-group">
             <label>Teléfono 1</label>
             <input type="text" name="phone_1" class="form-control" value="{{ old('phone_1', $applicant->phone_1) }}" required>
         </div>
 
-        <div class="mb-3">
+        <div class="form-group">
             <label>Teléfono 2 (opcional)</label>
             <input type="text" name="phone_2" class="form-control" value="{{ old('phone_2', $applicant->phone_2) }}">
         </div>
+    </div>
 
-        <div class="mb-3">
+    <div class="form-row">
+        <div class="form-group">
             <label>Nº de pasaporte (opcional)</label>
             <input type="text" name="passport_number" class="form-control" value="{{ old('passport_number', $applicant->passport_number) }}">
         </div>
 
-        <div class="mb-3">
+        <div class="form-group">
             <label>Estatura (cm)</label>
             <input type="number" name="height_cm" class="form-control" value="{{ old('height_cm', $applicant->height_cm) }}" required min="50" max="300">
         </div>
+    </div>
 
-        <div class="mb-3">
+    <div class="form-row">
+        <div class="form-group">
             <label>Color de ojos</label>
             <input type="text" name="eye_color" class="form-control" value="{{ old('eye_color', $applicant->eye_color) }}" required>
         </div>
 
-        <div class="mb-3">
+        <div class="form-group">
             <label>Tipo de sangre</label>
             <select name="blood_type" class="form-select" required>
                 @foreach($bloodTypes as $type)
@@ -100,8 +113,10 @@
                 @endforeach
             </select>
         </div>
+    </div>
 
-        <div class="mb-3">
+    
+        <div class="form-group">
             <label>¿Posee licencia en su país?</label>
             <select name="has_local_license" id="has_local_license" class="form-select" required>
                 <option value="0" {{ old('has_local_license', $applicant->has_local_license) == 0 ? 'selected' : '' }}>No</option>
@@ -110,26 +125,26 @@
         </div>
 
         <div id="local_license_photos" style="{{ old('has_local_license', $applicant->has_local_license) == 1 ? '' : 'display: none;' }}">
-            <div class="mb-3">
+            <div class="form-group">
                 <label>Imagen frontal de la licencia</label>
                 @php
                     $localFront = $applicant->attachments->firstWhere('type', 'local_license_front');
                 @endphp
                 @if($localFront)
-                    <div>
-                        <a href="{{ Storage::url($localFront->file_path) }}" target="_blank">Archivo actual</a>
+                    <div class="archivo-actual-wrapper mb-2">
+                        <a href="{{ Storage::url($localFront->file_path) }}" target="_blank" class="btn-archivo-actual">Ver archivo actual</a>
                     </div>
                 @endif
                 <input type="file" name="local_license_front" class="form-control">
             </div>
-            <div class="mb-3">
+            <div class="form-group">
                 <label>Imagen trasera de la licencia</label>
                 @php
                     $localBack = $applicant->attachments->firstWhere('type', 'local_license_back');
                 @endphp
                 @if($localBack)
-                    <div>
-                        <a href="{{ Storage::url($localBack->file_path) }}" target="_blank">Archivo actual</a>
+                    <div class="archivo-actual-wrapper mb-2">
+                        <a href="{{ Storage::url($localBack->file_path) }}" target="_blank" class="btn-archivo-actual">Ver archivo actual</a>
                     </div>
                 @endif
                 <input type="file" name="local_license_back" class="form-control">
@@ -141,23 +156,24 @@
 <div class="glass-section">
       <h3 class="glass-section-title">Datos de la licencia</h3>
 
-<div class="mb-3">
-    <label>Tipo de licencia</label>
-    <select name="license_type" id="license_type" class="form-select" required>
-        <option value="">Seleccione</option>
-        <option value="DIGITAL" {{ old('license_type', $applicant->license->type ?? '') == 'DIGITAL' ? 'selected' : '' }}>Digital</option>
-        <option value="FISICA" {{ old('license_type', $applicant->license->type ?? '') == 'FISICA' ? 'selected' : '' }}>Física</option>
-    </select>
-</div>
+    <div class="form-row">      
+        <div class="form-group">
+            <label>Tipo de licencia</label>
+            <select name="license_type" id="license_type" class="form-select" required>
+                <option value="">Seleccione</option>
+                <option value="DIGITAL" {{ old('license_type', $applicant->license->type ?? '') == 'DIGITAL' ? 'selected' : '' }}>Digital</option>
+                <option value="FISICA" {{ old('license_type', $applicant->license->type ?? '') == 'FISICA' ? 'selected' : '' }}>Física</option>
+            </select>
+        </div>
 
-<div class="mb-3">
-    <label>Duración</label>
-    <select name="duration" id="duration" class="form-select" required>
-        {{-- Se carga dinámicamente con JS --}}
-    </select>
-</div>
-
-<div class="mb-3">
+        <div class="form-group">
+            <label>Duración</label>
+            <select name="duration" id="duration" class="form-select" required>
+                {{-- Se carga dinámicamente con JS --}}
+            </select>
+        </div>
+    </div>
+<div class="form-group">
     <label>Categorías</label><br>
     @php
         $selectedCategories = old('categories', $applicant->license->categories ?? []);
@@ -173,38 +189,38 @@
     @endforeach
 </div>
 
-<div class="mb-3">
+<div class="form-group">
     <label>Número de transacción</label>
     <input type="text" name="transaction_number" class="form-control" value="{{ old('transaction_number', $applicant->license->transaction_number ?? '') }}" required>
 </div>
 
-<div class="mb-3">
+<div class="form-group">
     <label>Imagen frontal de la licencia generada</label>
     @php
         $front = $applicant->license->attachments->firstWhere('type', 'license_front');
     @endphp
     @if($front)
-        <div>
-            <a href="{{ Storage::url($front->file_path) }}" target="_blank">Archivo actual</a>
+        <div class="archivo-actual-wrapper mb-2">
+            <a href="{{ Storage::url($front->file_path) }}" target="_blank" class="btn-archivo-actual">Ver archivo actual</a>
         </div>
     @endif
     <input type="file" name="license_front" class="form-control">
 </div>
 
-<div class="mb-3">
+<div class="form-group">
     <label>Imagen trasera de la licencia generada</label>
     @php
         $back = $applicant->license->attachments->firstWhere('type', 'license_back');
     @endphp
     @if($back)
-        <div>
-            <a href="{{ Storage::url($back->file_path) }}" target="_blank">Archivo actual</a>
+        <div class="archivo-actual-wrapper mb-2">
+            <a href="{{ Storage::url($back->file_path) }}" target="_blank" class="btn-archivo-actual">Ver archivo actual</a>
         </div>
     @endif
     <input type="file" name="license_back" class="form-control">
 </div>
 
-<div class="mb-3">
+<div class="form-group">
     <label>Archivos adicionales (opcional)</label>
     @php
         $extras = $applicant->license->attachments->where('type', 'extra');
@@ -222,7 +238,23 @@
 </div>
 
 </div>
-        <button type="submit" class="btn-submit-glass">Actualizar</button>
+    
+    <div class="container my-4">
+        <div class="row justify-content-center">
+            <div class="col-auto">
+                <button type="submit" class="btn btn-success">
+                    <i class="fas fa-save me-1"></i> Actualizar
+                </button>
+            </div>
+
+            <div class="col-auto">
+                <a href="{{ route('sys.applicants.index') }}" class="btn btn-secondary">
+                    <i class="fas fa-times me-1"></i> Cancelar
+                </a>
+            </div>
+        </div>
+    </div>
+
     </form>
 </div>
 

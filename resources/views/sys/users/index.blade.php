@@ -2,20 +2,20 @@
 
 @section('content')
 
-    @if(session('success'))
+<div class="glass-card">
+
+  @if(session('success'))
         <div style="background-color: #d4edda; color: #155724; padding: 10px; margin-bottom: 10px; border-radius: 4px;">
             {{ session('success') }}
         </div>
     @endif
 
+  <h1 class="glass-title">Usuarios Registrados</h1>
 
-<div class="glass-card">
-  <div class="header-actions">
-    <h2>Usuarios Registrados</h2>
-    <a class="btn-create" href="{{ route('sys.users.create') }}">+ Crear Usuario</a>
-  </div>
+    <a href="{{ route('sys.users.create') }}" class="btn-agregar">+ Crear Usuario</a>
 
-  <div class="table-container">
+<div class="glass-section mt-3">
+  <div class="table-responsive">
     <table class="glass-table">
       <thead>
         <tr>
@@ -30,12 +30,12 @@
             <td>{{ $user->name }}</td>
             <td>{{ $user->email }}</td>
             <td class="actions">
-              <a class="btn-glass edit" href="{{ route('sys.users.edit', $user) }}">✏️ Editar</a>
-              <a class="btn-glass view" href="{{ route('sys.users.show', $user->id) }}">🔍 Ver</a>
+              <a href="{{ route('sys.users.show', $user->id) }}" class="btn-accion btn-ver">Ver</a>
+              <a href="{{ route('sys.users.edit', $user) }}" class="btn-accion btn-editar">Editar</a>
               <form action="{{ route('sys.users.destroy', $user->id) }}" method="POST" style="display:inline">
                 @csrf
                 @method('DELETE')
-                <button type="submit" class="btn-glass delete" onclick="return confirm('¿Estás seguro de eliminar este usuario?')">🗑️ Eliminar</button>
+                <button type="submit" class="btn-accion btn-eliminar" onclick="return confirm('¿Estás seguro de eliminar este usuario?')">Eliminar</button>
               </form>
             </td>
           </tr>
@@ -47,7 +47,7 @@
       </tbody>
     </table>
   </div>
-
-  <a class="btn-back" href="{{ route('sys') }}">← Volver al sistema</a>
+</div>
+  {{-- <a class="btn-back" href="{{ route('sys') }}">← Volver al sistema</a> --}}
 </div>
 @endsection

@@ -1,8 +1,13 @@
 /* ====== Estilos Generales ====== */
 body {
-    font-family: 'Figtree', sans-serif;
-    background-image: linear-gradient(to bottom,#22305D,#EBE2E1 50%,rgba(200, 22, 23, 0.8));
+    font-family: 'Roboto', sans-serif !important;
+    background-image: linear-gradient(to bottom,#22305D 30%,#EBE2E1);
     min-height: 100vh; /* Asegura que ocupe al menos el 100% del alto de la pantalla */
+}
+
+h1, h2, h3, .btn, .glass-subtitle {
+  font-family: 'Montserrat', sans-serif !important;
+  letter-spacing: 0.5px;
 }
 
 /* ====== Contenedor Principal (Tarjeta glass) ====== */
@@ -44,6 +49,12 @@ body {
   font-size: 1.6rem;
 }
 
+.glass-subtitle {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+}
+
 .glass-form-group {
   display: flex;
   gap: 1rem;
@@ -57,33 +68,47 @@ body {
   border-radius: 10px;
   border: none;
   background: rgba(255, 255, 255, 0.08);
-  color: #303030;
+  color: #ffffff;
   font-size: 1rem;
 }
 
 .glass-input::placeholder {
-  color: #353535;
+  color: #ffffff;
 }
 
 .glass-input:focus {
   outline: none;
   box-shadow: 0 0 5px #6896d3;
+  color: #030304;
 }
 
-.btn-red-gradient {
-  background: linear-gradient(to right, #C81617, #EBE2E1);
-  color: black;
-  padding: 0.8rem 1.6rem;
-  border: none;
+/*botones*/
+.btn-inicio, .btn-buscar {
+  color: #fff;
+  padding: 10px 20px;
   border-radius: 10px;
   font-weight: bold;
-  font-size: 1rem;
-  cursor: pointer;
+  text-decoration: none;
   transition: all 0.3s ease;
+  text-align: center;
+  border: none;
 }
 
-.btn-red-gradient:hover {
-  filter: brightness(0.95);
+.btn-inicio{
+  background: linear-gradient(to right, #22305D, #030304);
+}
+
+.btn-buscar{
+  background: linear-gradient(to right, #C81617, #EBE2E1);
+}
+
+.btn-inicio:hover {
+  background: #1b263f;
+  transform: scale(1.05);
+}
+
+.btn-buscar:hover {
+  background: #690505;
   transform: scale(1.05);
 }
 
@@ -100,13 +125,17 @@ body {
 
 .glass-profile {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 2rem;
   justify-content: space-between;
 }
 
-.glass-left, .glass-right {
-  flex: 1 1 400px;
+.glass-left .col-md-6 p {
+  margin-bottom: 0.75rem;
+}
+
+
+.glass-left, .glass-right, .glass-bottom{
   background: rgba(255, 255, 255, 0.26);
   padding: 1.5rem;
   border-radius: 10px;
@@ -114,18 +143,18 @@ body {
 
 .glass-left p,
 .glass-right p {
-  color: #333333;
+  color: #000000;
   margin-bottom: 0.6rem;
 }
 
 .adjuntos-grid {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
   gap: 1rem;
 }
 
 .img-preview {
-  width: 160px;
   text-align: center;
 }
 
@@ -143,55 +172,92 @@ body {
   color: #333333;
 }
 
-.imagen-protegida {
-  pointer-events: none;               /* Desactiva clics */
-  user-select: none;                  /* No se puede seleccionar */
-  -webkit-user-drag: none;            /* No se puede arrastrar en Webkit */
-}
-
-.bloqueo-capa {
-  position: relative;
-  display: inline-block;
-}
-.bloqueo-capa::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: transparent;
-  z-index: 2;
-}
-
 .canvas-licencia-wrapper {
   display: inline-block;
+  justify-content: center;
   margin: 1rem;
 }
 
 .canvas-protegido {
   border-radius: 10px;
+  width:fit-content;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   user-select: none;
-  pointer-events: none;
+  pointer-events: auto;
 }
 
+/*modal para las imagenes mostradas*/
 
+.modal-canvas-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(4px);
+  z-index: 9999;
+  animation: fadeIn 0.3s ease-in-out;
+}
 
-/*boton nueva busqueda*/
-.btn-nueva-busqueda {
-  display: inline-block;
+.modal-canvas-content {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  padding: 25px;
+  max-width: 90vw;
+  max-height: 90vh;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
+  text-align: center;
+  animation: slideIn 0.4s ease;
+}
+
+.canvas-container {
+  max-width: 100%;
+  max-height: 70vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#modal-canvas-canvas {
+  max-width: 100%;
+  max-height: 100%;
+  background: #f9f9f9;
+  border-radius: 8px;
+  cursor: grab;
+}
+
+.btn-cerrar-modal {
+  margin-top: 20px;
   background: linear-gradient(to right, #22305D, #030304);
   color: #fff;
-  margin-top: 2rem;
-  padding: 0.6rem 1.4rem;
-  border-radius: 10px;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
   font-weight: bold;
-  text-decoration: none;
-  transition: all 0.3s ease;
+  cursor: pointer;
+  transition: transform 0.2s, filter 0.2s;
 }
 
-.btn-nueva-busqueda:hover {
-  background: #1b263f;
+.btn-cerrar-modal:hover {
   transform: scale(1.05);
+  filter: brightness(0.9);
 }
+
+/* Animaciones suaves */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { transform: translateY(-30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
 
 
 /* Responsive para móviles */
@@ -199,7 +265,6 @@ body {
   .glass-card {
     padding: 1.5rem;
     border-radius: 10px;
-    margin: 1rem;
   }
 
   .form-grid {
@@ -254,7 +319,12 @@ body {
 
   .glass-title {
     text-align: center;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
+  }
+
+  .glass-subtitle {
+    text-align: center;
+    font-size: 1.2rem;
   }
 
   .btn-nueva-busqueda {
@@ -262,5 +332,41 @@ body {
     margin: 2rem auto 0;
     text-align: center;
   }
+
+  .canvas-protegido {
+  border-radius: 10px;
+  width:190px;
+  user-select: none;
+  pointer-events: auto;
+  }
 }
+
+/*responsive del modal*/
+@media (max-width: 768px) {
+  .modal-canvas-content {
+    width: 90vw;
+    height: auto;
+    padding: 20px 15px;
+    border-radius: 10px;
+  }
+
+  #modal-canvas-canvas {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 60vh;
+  }
+
+  .btn-cerrar-modal {
+    font-size: 0.9rem;
+    padding: 10px 16px;
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  .modal-canvas-overlay {
+    align-items: flex-start;
+    padding-top: 10vh;
+  }
+}
+
 

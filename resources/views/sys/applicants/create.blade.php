@@ -121,7 +121,7 @@
         </div>
     </div>
 
-    <div class="mb-3">
+    <div class="form-group">
             <label for="referred_id" class="form-label">Referido por</label>
             <select name="referred_id" class="form-select">
                 <option value="">Nadie</option>
@@ -134,7 +134,7 @@
             @error('referred_id')
                 <div class="text-danger">{{ $message }}</div>
             @enderror
-        </div>
+    </div>
     
     <div class="form-row">
         <div class="form-group">
@@ -187,7 +187,7 @@
         </div>
 </div>
 
-    <div class="glass-section">
+<div class="glass-section">
       <h3 class="glass-section-title">Datos de la licencia</h3>
 
         {{-- Datos de la licencia que se va a generar --}}
@@ -209,7 +209,7 @@
         </div>
     </div>
 
-        <div class="mb-3">
+        <div class="form-group">
             <label>Categorías</label><br>
             @foreach(['A', 'B', 'C', 'D', 'E'] as $cat)
                 <div class="form-check form-check-inline">
@@ -219,10 +219,10 @@
             @endforeach
         </div>
 
-        <div class="mb-3">
+        {{-- <div class="mb-3">
             <label>Número de transacción</label>
             <input type="text" name="transaction_number" class="form-control" required>
-        </div>
+        </div> --}}
 
     <div class="form-row">
         {{-- Imagen frontal y trasera de la licencia a entregar --}}
@@ -244,24 +244,38 @@
 
     {{-- Contenedor oculto con los campos adicionales --}}
     <div id="extraFilesContainer">
-        <div class="mb-3 extra-file d-none">
+        <div class="form-group extra-file d-none">
             <label for="extra_1" class="form-label">Archivo adicional 1</label>
             <input type="file" name="extra_1" id="extra_1" class="form-control">
         </div>
 
-        <div class="mb-3 extra-file d-none">
+        <div class="form-group extra-file d-none">
             <label for="extra_2" class="form-label">Archivo adicional 2</label>
             <input type="file" name="extra_2" id="extra_2" class="form-control">
         </div>
 
-        <div class="mb-3 extra-file d-none">
+        <div class="form-group extra-file d-none">
             <label for="extra_3" class="form-label">Archivo adicional 3</label>
             <input type="file" name="extra_3" id="extra_3" class="form-control">
         </div>
     </div>
-
+</div>
         {{-- Botón final --}}
-      <button type="submit" class="btn-submit-glass">Guardar</button>
+      <div class="container my-4">
+            <div class="row justify-content-center">
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-success">
+                        <i class="fas fa-save me-1"></i> Crear aplicante
+                    </button>
+                </div>
+
+                <div class="col-auto">
+                    <a href="{{ route('sys.applicants.index') }}" class="btn btn-secondary">
+                        <i class="fas fa-times me-1"></i> Cancelar
+                    </a>
+                </div>
+            </div>
+        </div>
     </form>
 </div>
 

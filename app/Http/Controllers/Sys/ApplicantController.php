@@ -188,6 +188,8 @@ class ApplicantController extends Controller
 
     public function edit(Applicant $applicant)
     {
+        $referreds = Referred::all();
+
         $countries = config('countries');
         $bloodTypes = ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'];
         $licenseCategories = ['A', 'B', 'C', 'D', 'E'];
@@ -204,7 +206,8 @@ class ApplicantController extends Controller
             'countries',
             'bloodTypes',
             'licenseCategories',
-            'durations'
+            'durations',
+            'referreds'
         ));
     }
 

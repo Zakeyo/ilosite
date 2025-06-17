@@ -33,7 +33,7 @@
         <li><strong>Tipo:</strong> {{ $applicant->license->license_type }}</li>
         <li><strong>Duración:</strong> {{ $applicant->license->duration }}</li>
         <li><strong>Categorías:</strong> {{ implode(', ', $applicant->license->categories) }}</li>
-        <li><strong>Número de trámite:</strong> {{ $applicant->license->transaction_number }}</li>
+        {{-- <li><strong>Número de trámite:</strong> {{ $applicant->license->transaction_number }}</li> --}}
         <li><strong>Fecha de emisión:</strong> {{ $applicant->license->issued_at?->format('d/m/Y') ?? 'No emitida' }}</li>
         <li><strong>Fecha de expiración:</strong> {{ $applicant->license->expires_at?->format('d/m/Y') ?? 'No establecida' }}</li>
         <li><strong>Estado:</strong> {{ ucfirst($applicant->license->status) }}</li>
